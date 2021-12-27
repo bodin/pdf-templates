@@ -1,5 +1,6 @@
 import be.quodlibet.boxable.*
 import be.quodlibet.boxable.line.LineStyle
+import net.webspite.pdf.model.DrawContext
 import net.webspite.pdf.parser.XMLParser
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.pdmodel.PDPage
@@ -10,10 +11,12 @@ import java.awt.Color
 
 
 fun main(args: Array<String>) {
+    Thread.currentThread()?.contextClassLoader?.getResource("test.xml")?.openStream().use {
+        if(it != null) XMLParser().parse(it).draw(DrawContext())
+    }
+}
 
-    XMLParser().parse("test.xml")
-
-
+fun draw(){
     val margin = 10f;
     val doc = PDDocument()
     val page = PDPage(PDRectangle.A5)

@@ -4,6 +4,6 @@ import net.webspite.pdf.model.DrawContext
 
 class StringContent(content: String): Content<String>(content) {
     override fun draw(ctx: DrawContext) {
-        TODO("Not yet implemented")
+        ctx.tables.peek().rows.last().cells.last().text = this.content
     }
 }

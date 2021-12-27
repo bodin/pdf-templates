@@ -2,9 +2,9 @@ package net.webspite.pdf.ast
 
 import net.webspite.pdf.model.DrawContext
 
-class Row(content: MutableList<Cell> = mutableListOf()) : Content<MutableList<Cell>>(content) {
+class Cell(content: MutableList<Content<*>> = mutableListOf()) : Content<MutableList<Content<*>>>(content) {
     override fun draw(ctx: DrawContext) {
-        ctx.tables.peek().createRow(20f)
+        ctx.tables.peek().rows.last().createCell(50f, "")
         this.content.forEach { it.draw(ctx) }
     }
 }

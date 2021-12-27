@@ -2,19 +2,21 @@ package net.webspite.pdf.parser
 
 import net.webspite.pdf.ast.*
 import org.xml.sax.helpers.DefaultHandler
+import java.io.InputStream
 import java.util.*
 import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 class XMLParser {
 
-    fun parse(file: String){
+    fun parse(stream: InputStream): Content<*>{
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
         val saxParser:SAXParser = parserFactory.newSAXParser()
 
+        var content: Stack<Content<*>> = Stack()
+
         val defaultHandler = object : DefaultHandler() {
-            var builder: StringBuilder? = null
-            var content: Stack<Content<*>> = Stack()
+            var builder: StringBuilder = StringBuilder()
 
             //overriding the startElement() method of DefaultHandler
             override fun startElement(uri: String, localName: String, qName: String, attributes: org.xml.sax.Attributes) {
@@ -23,7 +25,7 @@ class XMLParser {
                     "page" -> content.push(Page())
                     "table" -> content.push(Table())
                     "row" -> content.push(Row())
-                    "column" -> content.push(Column())
+                    "column" -> content.push(Cell())
                     else -> println("ERROR: Unknown Element $qName")
                 }
             }
@@ -35,16 +37,17 @@ class XMLParser {
                     "page" -> (content.peek() as Document).content?.add(top as Page)
                     "table" -> (content.peek() as Page).content?.add(top as Table)
                     "row" -> (content.peek() as Table).content?.add(top as Row)
-                    "column" -> (content.peek() as Row).content?.add(Column(mutableListOf(StringContent(builder.toString()))))
-                    else -> builder = null
+                    "column" -> (content.peek() as Row).content?.add(Cell(mutableListOf(StringContent(builder.toString().trim()))))
                 }
+                builder.clear()
             }
 
             override fun characters(ch: CharArray, start: Int, length: Int) {
-                builder?.append(ch, start, length)
+                builder.append(ch, start, length)
             }
         }
 
-        saxParser.parse(Thread.currentThread().getContextClassLoader().getResource(file).file, defaultHandler)
+        saxParser.parse(stream, defaultHandler)
+        return content.pop()
     }
 }
