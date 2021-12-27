@@ -3,7 +3,7 @@ package net.webspite.pdf.ast
 import be.quodlibet.boxable.BaseTable
 import net.webspite.pdf.model.DrawContext
 
-class Table(content: MutableList<Row> = mutableListOf()) : Content<MutableList<Row>>(content) {
+class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
     override fun draw(ctx: DrawContext) {
         ctx.tables.push(
             BaseTable(

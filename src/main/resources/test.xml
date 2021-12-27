@@ -3,8 +3,14 @@
         <table>
             <row>
                 <column>1</column>
-                <column>2</column>
-                <column>3</column>
+                <column>
+                    <table>
+                        <row>
+                            <column>a</column>
+                            <column>b</column>
+                        </row>
+                    </table>
+                </column>
             </row>
             <row>
                 <column>4</column>

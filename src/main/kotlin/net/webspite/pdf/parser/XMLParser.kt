@@ -9,11 +9,11 @@ import javax.xml.parsers.SAXParserFactory
 
 class XMLParser {
 
-    fun parse(stream: InputStream): Content<*>{
+    fun parse(stream: InputStream): Content{
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
         val saxParser:SAXParser = parserFactory.newSAXParser()
 
-        var content: Stack<Content<*>> = Stack()
+        var content: Stack<NestedContent> = Stack()
 
         val defaultHandler = object : DefaultHandler() {
             var builder: StringBuilder = StringBuilder()
@@ -31,19 +31,26 @@ class XMLParser {
             }
             //overriding the endElement() method of DefaultHandler
             override fun endElement(uri: String, localName: String, qName: String) {
-                val top : Content<*> = content.pop();
+                val top : NestedContent = content.pop();
                 when (qName) {
                     "document" -> content.push(top);
-                    "page" -> (content.peek() as Document).content?.add(top as Page)
-                    "table" -> (content.peek() as Page).content?.add(top as Table)
-                    "row" -> (content.peek() as Table).content?.add(top as Row)
-                    "column" -> (content.peek() as Row).content?.add(Cell(mutableListOf(StringContent(builder.toString().trim()))))
+                    "page" -> content.peek().content.add(top)
+                    "table" -> content.peek().content.add(top)
+                    "row" -> content.peek().content.add(top)
+                    "column" -> {
+                        if(top.content.size == 0) {
+                            top.content.add(StringContent(builder.toString().trim()))
+                        }
+                        content.peek().content?.add(top)
+                    }
                 }
                 builder.clear()
             }
 
             override fun characters(ch: CharArray, start: Int, length: Int) {
-                builder.append(ch, start, length)
+                if(content.peek() is Cell) {
+                    builder.append(ch, start, length)
+                }
             }
         }
 
