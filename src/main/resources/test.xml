@@ -2,7 +2,9 @@
     <page>
         <table>
             <row>
-                <column>1</column>
+                <column>
+                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                </column>
                 <column>
                     <table>
                         <row>
@@ -11,10 +13,6 @@
                         </row>
                     </table>
                 </column>
-            </row>
-            <row>
-                <column>4</column>
-                <column>5</column>
             </row>
         </table>
     </page>

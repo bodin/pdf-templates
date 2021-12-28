@@ -4,20 +4,26 @@ import be.quodlibet.boxable.BaseTable
 import net.webspite.pdf.model.DrawContext
 
 class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
-    override fun draw(ctx: DrawContext) {
+    override fun draw(ctx: DrawContext): Float {
         ctx.tables.push(
             BaseTable(
-            ctx.height - ctx.margin,
-            ctx.height - ctx.margin,
+            this.y,
+            this.y,
             ctx.margin,
-            ctx.width - 2 * ctx.margin,
-            ctx.margin,
+            this.widthPx,
+            this.x,
             ctx.document,
             ctx.page,
             true,
             true)
         )
-        this.content.forEach { it.draw(ctx) }
-        ctx.tables.pop().draw()
+        var myY = this.y
+        this.content.forEach {
+            it.x = this.x
+            it.widthPx = this.widthPx
+            it.y = myY
+            myY = it.draw(ctx)
+        }
+        return ctx.tables.pop().draw()
     }
 }
