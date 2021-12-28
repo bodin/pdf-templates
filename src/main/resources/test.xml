@@ -3,15 +3,57 @@
         <table>
             <row>
                 <column>
+                    <table>
+                        <row>
+                            <column>a</column>
+                            <column>
+                                <table>
+                                    <row>
+                                        <column>b</column>
+                                        <column>c</column>
+                                    </row>
+                                </table>
+                            </column>
+                        </row>
+                    </table>
+                </column>
+                <column>
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </column>
                 <column>
                     <table>
                         <row>
                             <column>a</column>
-                            <column>b</column>
+                            <column>
+                                <table>
+                                    <row>
+                                        <column>b</column>
+                                        <column>c</column>
+                                    </row>
+                                </table>
+                            </column>
                         </row>
                     </table>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <table>
+                        <row>
+                            <column>a</column>
+                            <column>
+                                <table>
+                                    <row>
+                                        <column>b</column>
+                                        <column>c</column>
+                                    </row>
+                                </table>
+                            </column>
+                        </row>
+                    </table>
+                </column>
+                <column>
+                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </column>
             </row>
         </table>

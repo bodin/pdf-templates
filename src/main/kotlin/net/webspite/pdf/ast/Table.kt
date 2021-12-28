@@ -17,11 +17,11 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
             true,
             true)
         )
-        var myY = this.y
+        var myY = 0f
         this.content.forEach {
             it.x = this.x
             it.widthPx = this.widthPx
-            it.y = myY
+            it.y = this.y - myY
             myY = it.draw(ctx)
         }
         return ctx.tables.pop().draw()
