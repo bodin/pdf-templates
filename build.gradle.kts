@@ -17,6 +17,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.github.dhorions/boxable
     implementation("com.github.dhorions:boxable:1.6")
+
+    implementation("com.github.jknack:handlebars:4.3.0")
 }
 
 tasks {

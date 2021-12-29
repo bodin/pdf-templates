@@ -1,0 +1,30 @@
+<document>
+    <page>
+        <table>
+            {{#each this}}
+                <row fontSize="18">
+                    <text>{{this}}</text>
+                    <table fontSize="18" width="75%" colorFill="red">
+                        <row>
+                            <text>nested</text>
+                            <text>table</text>
+                        </row>
+                    </table>
+                </row>
+            {{/each}}
+        </table>
+        <table>
+            {{#each this}}
+            <row fontSize="18">
+                <text>{{this}}</text>
+                <table fontSize="18" width="75%" colorFill="red">
+                    <row>
+                        <text>nested</text>
+                        <text>table</text>
+                    </row>
+                </table>
+            </row>
+            {{/each}}
+        </table>
+    </page>
+</document>

@@ -1,17 +1,14 @@
 package net.webspite.pdf.ast
 
+import be.quodlibet.boxable.image.Image
 import net.webspite.pdf.model.DrawContext
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject
 
-
-
-
-class ImageContent(var content: String): Content() {
+class ImageCell(var content: String = ""): Content() {
     override fun draw(ctx: DrawContext) : Float{
-        var cell = ctx.tables.peek().rows.last().cells.last();
+        var image : Image = Image()
 
-        val pdImage = PDImageXObject.createFromFile("C:/logo.png", ctx.document)
-
+        var cell = ctx.tables.peek().rows.last().createImageCell(this.widthPt, image)
 
         if(this.alignH != null) cell.align = this.alignH
         if(this.alignV != null) cell.valign = this.alignV

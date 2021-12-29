@@ -23,7 +23,7 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
             it.widthPt = this.widthPt
             it.y = this.y - myY
             this.copyTo(it)
-            myY = it.draw(ctx)
+            myY = myY + it.draw(ctx)
         }
         return ctx.tables.pop().draw()
     }

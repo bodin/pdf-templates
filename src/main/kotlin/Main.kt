@@ -1,6 +1,10 @@
 import be.quodlibet.boxable.*
 import be.quodlibet.boxable.line.LineStyle
-import net.webspite.pdf.model.DrawContext
+import com.github.jknack.handlebars.Handlebars
+import com.github.jknack.handlebars.Template
+import com.github.jknack.handlebars.io.ClassPathTemplateLoader
+import com.github.jknack.handlebars.io.TemplateLoader
+import com.github.jknack.handlebars.io.URLTemplateSource
 import net.webspite.pdf.parser.XMLParser
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.pdmodel.PDPage
@@ -12,6 +16,10 @@ import java.io.FileOutputStream
 
 
 fun main(args: Array<String>) {
+    basic()
+    handlebars()
+}
+fun basic(){
     Thread.currentThread()?.contextClassLoader?.getResource("test.xml")?.openStream().use {
         if(it != null) {
             val node = XMLParser().parse(it);
@@ -28,12 +36,21 @@ fun main(args: Array<String>) {
 
     Thread.currentThread()?.contextClassLoader?.getResource("test-hard.xml")?.openStream().use {
         if(it != null) {
-            val node = XMLParser().parse(it);
-            node.write(FileOutputStream("build/test-hard.pdf"))
+
         }
     }
 }
+fun handlebars(){
+    val loader: TemplateLoader = ClassPathTemplateLoader("/", ".xml")
+    val handlebars = Handlebars().with(loader)
 
+    val template: Template = handlebars.compile("test-nested.hb")
+println( template.apply(listOf("a", "b", "c")))
+    template.apply(listOf("a", "b", "c")).byteInputStream().use {
+        val node = XMLParser().parse(it);
+        node.write(FileOutputStream("build/test-nested.hb.pdf"))
+    }
+}
 fun draw(){
     val margin = 10f;
     val doc = PDDocument()

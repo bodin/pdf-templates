@@ -5,6 +5,7 @@ import be.quodlibet.boxable.VerticalAlignment
 import net.webspite.pdf.ast.*
 import org.xml.sax.helpers.DefaultHandler
 import java.awt.Color
+import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.*
 import javax.xml.parsers.SAXParser

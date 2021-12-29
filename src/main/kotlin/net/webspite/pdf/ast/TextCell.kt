@@ -4,9 +4,7 @@ import net.webspite.pdf.model.DrawContext
 
 class TextCell(var content: String = ""): Content() {
     override fun draw(ctx: DrawContext) : Float{
-        var cell = ctx.tables.peek().rows.last().createCell(this.widthPct, "")
-
-        cell.text = this.content
+        var cell = ctx.tables.peek().rows.last().createCell(this.widthPct, this.content)
 
         if(this.alignH != null) cell.align = this.alignH
         if(this.alignV != null) cell.valign = this.alignV
