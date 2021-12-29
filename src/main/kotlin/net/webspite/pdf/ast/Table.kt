@@ -10,7 +10,7 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
             this.y,
             this.y,
             ctx.margin,
-            this.widthPx,
+            this.widthPt,
             this.x,
             ctx.document,
             ctx.page,
@@ -20,8 +20,9 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
         var myY = 0f
         this.content.forEach {
             it.x = this.x
-            it.widthPx = this.widthPx
+            it.widthPt = this.widthPt
             it.y = this.y - myY
+            this.copyTo(it)
             myY = it.draw(ctx)
         }
         return ctx.tables.pop().draw()

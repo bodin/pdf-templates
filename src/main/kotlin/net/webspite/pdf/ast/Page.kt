@@ -12,8 +12,9 @@ class Page(content: MutableList<Table> = mutableListOf()) : NestedContent(conten
         var myY = this.y
         this.content.forEach {
             it.x = this.x
-            it.widthPx = this.widthPx
+            it.widthPt = this.widthPt
             it.y = myY
+            this.copyTo(it)
             myY = it.draw(ctx)
         }
         return myY

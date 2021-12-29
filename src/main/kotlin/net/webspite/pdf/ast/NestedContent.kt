@@ -8,7 +8,7 @@ abstract class NestedContent(var content: MutableList<Content>): Content() {
     override fun calculate(ctx: DrawContext) {
         this.content.forEach {
             if(it.x < 0f) it.x = this.x
-            if(it.widthPx == 0f) it.widthPx = this.widthPx
+            if(it.widthPt == 0f) it.widthPt = this.widthPt
             it.calculate(ctx)
         }
     }
@@ -16,6 +16,7 @@ abstract class NestedContent(var content: MutableList<Content>): Content() {
     fun drawChildren(ctx: DrawContext): Float {
         var max = 0f
         this.content.forEach {
+            this.copyTo(it)
             max = max(max, it.draw(ctx))
         }
         return max

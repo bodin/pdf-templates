@@ -4,7 +4,16 @@ import net.webspite.pdf.model.DrawContext
 
 class StringContent(var content: String): Content() {
     override fun draw(ctx: DrawContext) : Float{
-        ctx.tables.peek().rows.last().cells.last().text = this.content
+        var cell = ctx.tables.peek().rows.last().cells.last();
+
+        cell.text = this.content
+
+        if(this.alignH != null) cell.align = this.alignH
+        if(this.alignV != null) cell.valign = this.alignV
+        if(this.colorFill != null) cell.fillColor = this.colorFill
+        if(this.colorText != null) cell.textColor = this.colorText
+        if(this.fontSize > 0f) cell.fontSize = this.fontSize
+
         return ctx.tables.peek().rows.last().cells.last().height
     }
 

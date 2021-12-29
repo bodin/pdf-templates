@@ -14,7 +14,6 @@ fun main(args: Array<String>) {
     Thread.currentThread()?.contextClassLoader?.getResource("test.xml")?.openStream().use {
         if(it != null) {
             val node = XMLParser().parse(it);
-            //node.calculate(DrawContext())
             node.draw(DrawContext())
         }
     }

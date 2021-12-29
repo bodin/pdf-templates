@@ -19,11 +19,12 @@ class Row(content: MutableList<Cell> = mutableListOf()) : NestedContent(content 
 
         this.content.forEach{
             it.x = currentX
-            it.widthPct = pctWidth
-            it.widthPx = this.widthPx * it.widthPct / 100
+            if(it.widthPct == 0f) it.widthPct = pctWidth
+            it.widthPt = this.widthPt * it.widthPct / 100
 
-            currentX = it.x + it.widthPx
+            currentX = it.x + it.widthPt
             it.y = this.y
+            this.copyTo(it)
             it.draw(ctx)
         }
 

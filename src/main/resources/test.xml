@@ -2,22 +2,22 @@
     <page>
         <table>
             <row>
-                <column>
+                <column fontSize="18" width="75%" colorFill="red">
                     <table>
                         <row>
-                            <column>a</column>
                             <column>
                                 <table>
                                     <row>
+                                        <column>a</column>
                                         <column>b</column>
-                                        <column>c</column>
                                     </row>
                                 </table>
                             </column>
+                            <column>c</column>
                         </row>
                     </table>
                 </column>
-                <column>
+                <column colorText="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </column>
                 <column>
