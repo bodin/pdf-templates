@@ -1,0 +1,24 @@
+<document>
+    <page>
+        <table>
+            <row fontSize="18">
+                <text>c</text>
+                <table fontSize="18" width="75%" colorFill="red">
+                    <row>
+                        <text>a</text>
+                        <text>b</text>
+                    </row>
+                </table>
+            </row>
+            <row>
+                <text>c</text>
+                <table fontSize="18" width="75%" colorFill="red">
+                    <row>
+                        <text>a</text>
+                        <text>b</text>
+                    </row>
+                </table>
+            </row>
+        </table>
+    </page>
+</document>

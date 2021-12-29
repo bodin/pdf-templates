@@ -6,18 +6,17 @@ import net.webspite.pdf.ast.*
 import org.xml.sax.helpers.DefaultHandler
 import java.awt.Color
 import java.io.InputStream
-import java.lang.reflect.Field
 import java.util.*
 import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 class XMLParser {
 
-    fun parse(stream: InputStream): Content{
+    fun parse(stream: InputStream): Document {
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
         val saxParser:SAXParser = parserFactory.newSAXParser()
 
-        var content: Stack<NestedContent> = Stack()
+        var content: Stack<Content> = Stack()
 
         val defaultHandler = object : DefaultHandler() {
             var builder: StringBuilder = StringBuilder()
@@ -27,17 +26,15 @@ class XMLParser {
                 when (qName) {
                     "document" -> content.push(Document())
                     "page" -> content.push(Page())
-                    "table" -> content.push(Table())
-                    "row" -> content.push(Row())
-                    "column" -> {
-                        content.push(Cell())
-                        var width = attributes.getValue("width")
-                        if (width != null) {
-                            if (width.endsWith("%")) {
-                                content.peek().widthPct = width.removeSuffix("%").toFloat()
-                            }
+                    "table" -> {
+                        if(content.peek() is Row) {
+                            content.push(TableCell())
+                        }else{
+                            content.push(Table())
                         }
                     }
+                    "row" -> content.push(Row())
+                    "text" -> content.push(TextCell())
                     else -> println("ERROR: Unknown Element $qName")
                 }
                 copyAttributes(content.peek(), attributes)
@@ -45,24 +42,22 @@ class XMLParser {
 
             //overriding the endElement() method of DefaultHandler
             override fun endElement(uri: String, localName: String, qName: String) {
-                val top : NestedContent = content.pop();
+                val top : Content = content.pop();
                 when (qName) {
                     "document" -> content.push(top);
-                    "page" -> content.peek().content.add(top)
-                    "table" -> content.peek().content.add(top)
-                    "row" -> content.peek().content.add(top)
-                    "column" -> {
-                        if (top.content.size == 0) {
-                            top.content.add(StringContent(builder.toString().trim()))
-                        }
-                        content.peek().content?.add(top)
+                    "page" -> (content.peek() as NestedContent).content.add(top)
+                    "table" -> (content.peek() as NestedContent).content.add(top)
+                    "row" -> (content.peek() as NestedContent).content.add(top)
+                    "text" -> {
+                        (top as TextCell).content = builder.toString().trim()
+                        (content.peek() as NestedContent).content.add(top)
                     }
                 }
                 builder.clear()
             }
 
             override fun characters(ch: CharArray, start: Int, length: Int) {
-                if(content.peek() is Cell) {
+                if(content.peek() is TextCell) {
                     builder.append(ch, start, length)
                 }
             }
@@ -103,6 +98,6 @@ class XMLParser {
         }
 
         saxParser.parse(stream, defaultHandler)
-        return content.pop()
+        return content.pop() as Document
     }
 }

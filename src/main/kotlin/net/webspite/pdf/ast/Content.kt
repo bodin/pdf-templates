@@ -19,7 +19,7 @@ abstract class Content {
     var colorFill: Color? = null
 
     abstract fun draw(ctx: DrawContext): Float
-    abstract fun calculate(ctx: DrawContext);
+
     override fun toString(): String {
         return "${this.javaClass.name}"
     }

@@ -8,13 +8,28 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.font.PDFont
 import org.apache.pdfbox.pdmodel.font.PDType1Font
 import java.awt.Color
+import java.io.FileOutputStream
 
 
 fun main(args: Array<String>) {
     Thread.currentThread()?.contextClassLoader?.getResource("test.xml")?.openStream().use {
         if(it != null) {
             val node = XMLParser().parse(it);
-            node.draw(DrawContext())
+            node.write(FileOutputStream("build/test.pdf"))
+        }
+    }
+
+    Thread.currentThread()?.contextClassLoader?.getResource("test-nested.xml")?.openStream().use {
+        if(it != null) {
+            val node = XMLParser().parse(it);
+            node.write(FileOutputStream("build/test-nested.pdf"))
+        }
+    }
+
+    Thread.currentThread()?.contextClassLoader?.getResource("test-hard.xml")?.openStream().use {
+        if(it != null) {
+            val node = XMLParser().parse(it);
+            node.write(FileOutputStream("build/test-hard.pdf"))
         }
     }
 }
@@ -24,7 +39,6 @@ fun draw(){
     val doc = PDDocument()
     val page = PDPage(PDRectangle.A5)
     doc.addPage(page)
-
 
     val table = BaseTable(
         PDRectangle.A5.height - margin,

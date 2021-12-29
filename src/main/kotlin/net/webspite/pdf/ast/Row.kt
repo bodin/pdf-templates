@@ -2,10 +2,7 @@ package net.webspite.pdf.ast
 
 import net.webspite.pdf.model.DrawContext
 
-class Row(content: MutableList<Cell> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
-    override fun calculate(ctx: DrawContext) {
-
-    }
+class Row(content: MutableList<NestedContent> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
 
     override fun draw(ctx: DrawContext) : Float{
         var r = ctx.tables.peek().createRow(0f)
@@ -17,16 +14,19 @@ class Row(content: MutableList<Cell> = mutableListOf()) : NestedContent(content 
         var pctWidth = remainingWidth / undefinedWidths
         var currentX = this.x;
 
+        var myY = 0f
         this.content.forEach{
             it.x = currentX
             if(it.widthPct == 0f) it.widthPct = pctWidth
-            it.widthPt = this.widthPt * it.widthPct / 100
+            if(it.widthPt == 0f) it.widthPt = this.widthPt * it.widthPct / 100
 
             currentX = it.x + it.widthPt
             it.y = this.y
             this.copyTo(it)
-            it.draw(ctx)
+            myY = Math.min(myY, it.draw(ctx))
         }
+
+        r.height = myY
 
         return r.height
     }
