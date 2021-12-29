@@ -34,9 +34,17 @@ fun basic(){
         }
     }
 
+    Thread.currentThread()?.contextClassLoader?.getResource("test-image.xml")?.openStream().use {
+        if(it != null) {
+            val node = XMLParser().parse(it);
+            node.write(FileOutputStream("build/test-image.pdf"))
+        }
+    }
+
     Thread.currentThread()?.contextClassLoader?.getResource("test-hard.xml")?.openStream().use {
         if(it != null) {
-
+            val node = XMLParser().parse(it);
+            node.write(FileOutputStream("build/test-hard.pdf"))
         }
     }
 }

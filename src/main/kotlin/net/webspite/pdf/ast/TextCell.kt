@@ -2,7 +2,7 @@ package net.webspite.pdf.ast
 
 import net.webspite.pdf.model.DrawContext
 
-class TextCell(var content: String = ""): Content() {
+class TextCell(content: String = ""): ContentCell(content) {
     override fun draw(ctx: DrawContext) : Float{
         var cell = ctx.tables.peek().rows.last().createCell(this.widthPct, this.content)
 

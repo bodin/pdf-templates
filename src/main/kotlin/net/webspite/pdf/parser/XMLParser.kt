@@ -36,6 +36,7 @@ class XMLParser {
                     }
                     "row" -> content.push(Row())
                     "text" -> content.push(TextCell())
+                    "image" -> content.push(ImageCell())
                     else -> println("ERROR: Unknown Element $qName")
                 }
                 copyAttributes(content.peek(), attributes)
@@ -49,8 +50,8 @@ class XMLParser {
                     "page" -> (content.peek() as NestedContent).content.add(top)
                     "table" -> (content.peek() as NestedContent).content.add(top)
                     "row" -> (content.peek() as NestedContent).content.add(top)
-                    "text" -> {
-                        (top as TextCell).content = builder.toString().trim()
+                    "image", "text" -> {
+                        (top as ContentCell).content = builder.toString().trim()
                         (content.peek() as NestedContent).content.add(top)
                     }
                 }
@@ -58,7 +59,7 @@ class XMLParser {
             }
 
             override fun characters(ch: CharArray, start: Int, length: Int) {
-                if(content.peek() is TextCell) {
+                if(content.peek() is ContentCell) {
                     builder.append(ch, start, length)
                 }
             }
