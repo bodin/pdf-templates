@@ -1,11 +1,8 @@
 package net.webspite.pdf.parser
 
-import be.quodlibet.boxable.HorizontalAlignment
-import be.quodlibet.boxable.VerticalAlignment
 import net.webspite.pdf.ast.*
 import org.xml.sax.helpers.DefaultHandler
 import java.awt.Color
-import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.*
 import javax.xml.parsers.SAXParser
@@ -17,7 +14,7 @@ class XMLParser {
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
         val saxParser:SAXParser = parserFactory.newSAXParser()
 
-        var content: Stack<Content> = Stack()
+        val content: Stack<Content> = Stack()
 
         val defaultHandler = object : DefaultHandler() {
             var builder: StringBuilder = StringBuilder()
@@ -44,9 +41,9 @@ class XMLParser {
 
             //overriding the endElement() method of DefaultHandler
             override fun endElement(uri: String, localName: String, qName: String) {
-                val top : Content = content.pop();
+                val top : Content = content.pop()
                 when (qName) {
-                    "document" -> content.push(top);
+                    "document" -> content.push(top)
                     "page" -> (content.peek() as NestedContent).content.add(top)
                     "table" -> (content.peek() as NestedContent).content.add(top)
                     "row" -> (content.peek() as NestedContent).content.add(top)
@@ -65,37 +62,33 @@ class XMLParser {
             }
 
             fun copyAttributes(c: Content, attributes: org.xml.sax.Attributes){
-                var width = attributes.getValue("width")
-                if(width != null){
-                    if(width.endsWith("%")){
-                        c.widthPct = width.removeSuffix("%").toFloat()
-                    }else if(width.endsWith("pt")){
-                        c.widthPt = width.removeSuffix("pt").toFloat()
-                    }
-                }
                 if (attributes.getValue("fontSize") != null) {
                     c.fontSize = attributes.getValue("fontSize").toFloat()
                 }
                 when(attributes.getValue("alignH")){
-                    "left" -> c.alignH = HorizontalAlignment.LEFT
-                    "right" -> c.alignH = HorizontalAlignment.RIGHT
-                    "center" -> c.alignH = HorizontalAlignment.CENTER
+                    //"left" -> c.alignH = HorizontalAlignment.LEFT
+                    //"right" -> c.alignH = HorizontalAlignment.RIGHT
+                    //"center" -> c.alignH = HorizontalAlignment.CENTER
                 }
                 when(attributes.getValue("alignV")){
-                    "bottom" -> c.alignV = VerticalAlignment.BOTTOM
-                    "top" -> c.alignV = VerticalAlignment.TOP
-                    "middle" -> c.alignV = VerticalAlignment.MIDDLE
+                    //"bottom" -> c.alignV = VerticalAlignment.BOTTOM
+                    //"top" -> c.alignV = VerticalAlignment.TOP
+                    //"middle" -> c.alignV = VerticalAlignment.MIDDLE
                 }
 
                 var color = attributes.getValue("colorFill")
                 try {
                     c.colorFill = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
-                } catch (e: Exception) {}
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
 
                 color = attributes.getValue("colorText")
                 try {
                     c.colorText = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
-                } catch (e: Exception) {}
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
 

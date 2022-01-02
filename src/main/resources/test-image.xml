@@ -12,7 +12,16 @@
                 <text colorText="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
-
+            </row>
+            <row>
+                <table>
+                    <row>
+                        <image>https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
+                        <text colorText="blue">
+                            this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                        </text>
+                    </row>
+                </table>
             </row>
         </table>
     </page>

@@ -12,11 +12,8 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
-    implementation("org.apache.pdfbox:pdfbox:2.0.25")
-
-    // https://mvnrepository.com/artifact/com.github.dhorions/boxable
-    implementation("com.github.dhorions:boxable:1.6")
+    // https://mvnrepository.com/artifact/com.github.librepdf/openpdf
+    implementation("com.github.librepdf:openpdf:1.3.26")
 
     implementation("com.github.jknack:handlebars:4.3.0")
 }
