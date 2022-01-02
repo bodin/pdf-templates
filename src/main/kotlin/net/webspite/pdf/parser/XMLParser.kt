@@ -1,6 +1,8 @@
 package net.webspite.pdf.parser
 
 import net.webspite.pdf.ast.*
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.xml.sax.helpers.DefaultHandler
 import java.awt.Color
 import java.io.InputStream
@@ -9,6 +11,8 @@ import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 class XMLParser {
+
+    val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     fun parse(stream: InputStream): Document {
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
@@ -80,14 +84,14 @@ class XMLParser {
                 try {
                     c.colorFill = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                   log.error(e.message, e)
                 }
 
                 color = attributes.getValue("colorText")
                 try {
                     c.colorText = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    log.error(e.message, e)
                 }
             }
         }
