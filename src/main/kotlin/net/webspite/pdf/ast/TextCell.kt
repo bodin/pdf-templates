@@ -6,7 +6,7 @@ import net.webspite.pdf.model.DrawContext
 
 class TextCell(content: String = ""): ContentCell(content) {
     override fun draw(ctx: DrawContext) {
-        val cell = PdfPCell(Phrase(this.content))
+        val cell = PdfPCell(Phrase(this.content, ctx.getFont(this)))
 
         this.styleCell(cell)
 

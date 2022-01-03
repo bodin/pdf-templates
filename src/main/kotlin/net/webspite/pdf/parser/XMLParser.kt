@@ -1,6 +1,7 @@
 package net.webspite.pdf.parser
 
 import com.lowagie.text.Element
+import com.lowagie.text.Font
 import net.webspite.pdf.ast.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -67,9 +68,16 @@ class XMLParser {
                     val value = attributes.getValue(i);
                     when (name) {
                         "layout" -> if (c is Table) c.layout = layout(value)
+                        "fontName" -> c.fontName = value
                         "fontSize" -> c.fontSize = value.toFloat()
-                        "colorFill" -> c.colorFill = color(value)
+                        "fontStyle" -> when(value){
+                            "bold" -> c.fontStyle = Font.BOLD
+                            "strikethrough" -> c.fontStyle = Font.STRIKETHRU
+                            "italic" -> c.fontStyle = Font.ITALIC
+                            "underline" -> c.fontStyle = Font.UNDERLINE
+                        }
                         "fontColor" -> c.fontColor = color(value)
+                        "colorFill" -> c.colorFill = color(value)
                         "paddingTop" -> c.paddingTop = value.toFloat()
                         "paddingBottom" -> c.paddingBottom = value.toFloat()
                         "paddingLeft" -> c.paddingLeft = value.toFloat()

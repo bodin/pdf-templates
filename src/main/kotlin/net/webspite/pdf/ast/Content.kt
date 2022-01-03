@@ -1,17 +1,24 @@
 package net.webspite.pdf.ast
 
+import com.lowagie.text.Font
+import com.lowagie.text.FontFactory
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
 import net.webspite.pdf.model.DrawContext
 import java.awt.Color
 
+
 abstract class Content {
     //Preferences
-    var fontSize: Float = 0f
+    var fontName: String? = null
+    var fontSize: Float? = null
+    var fontStyle: Int? = null
+    var fontColor: Color? = null
+
     var alignH: Int? = null
     var alignV: Int? = null
-    var fontColor: Color? = null
+
     var colorFill: Color? = null
     var paddingTop: Float? = null
     var paddingBottom: Float? = null
@@ -26,7 +33,11 @@ abstract class Content {
 
     fun copyTo(c: Content){
 
+        if(c.fontName == null) c.fontName = this.fontName
         if(c.fontSize == null) c.fontSize = this.fontSize
+        if(c.fontStyle == null) c.fontStyle = this.fontStyle
+        if(c.fontColor == null) c.fontColor = this.fontColor
+
         if(c.colorFill == null) c.colorFill = this.colorFill
         if(c.fontColor == null) c.fontColor = this.fontColor
 
