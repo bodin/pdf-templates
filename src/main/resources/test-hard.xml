@@ -49,4 +49,51 @@
             </row>
         </table>
     </page>
+    <page>
+        <table>
+            <row>
+                <table fontSize="18" width="75%" colorFill="red">
+                    <row>
+                        <table>
+                            <row>
+                                <text>a</text>
+                                <text>b</text>
+                            </row>
+                        </table>
+                        <text>c</text>
+                    </row>
+                </table>
+                <text colorText="blue">
+                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                </text>
+                <table>
+                    <row>
+                        <text>a</text>
+                        <table>
+                            <row>
+                                <text>b</text>
+                                <text>c</text>
+                            </row>
+                        </table>
+                    </row>
+                </table>
+            </row>
+            <row>
+                <table>
+                    <row>
+                        <text>a</text>
+                        <table>
+                            <row>
+                                <text>b</text>
+                                <text>c</text>
+                            </row>
+                        </table>
+                    </row>
+                </table>
+                <text>
+                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                </text>
+            </row>
+        </table>
+    </page>
 </document>

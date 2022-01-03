@@ -1,9 +1,9 @@
 <document>
     <page>
-        <table>
+        <table layout="20 80">
             <row fontSize="18">
                 <text>c</text>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table layout="20 80">
                     <row>
                         <text>a</text>
                         <text>b</text>

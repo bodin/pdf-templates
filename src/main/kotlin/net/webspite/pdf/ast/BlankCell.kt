@@ -1,12 +1,11 @@
 package net.webspite.pdf.ast
 
-import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfPCell
 import net.webspite.pdf.model.DrawContext
 
-class TextCell(content: String = ""): ContentCell(content) {
+class BlankCell(content: String = ""): ContentCell(content) {
     override fun draw(ctx: DrawContext) {
-        val cell = PdfPCell(Phrase(this.content))
+        val cell = PdfPCell()
 
         //if(this.alignH != null) cell.align = this.alignH
         //if(this.alignV != null) cell.valign = this.alignV

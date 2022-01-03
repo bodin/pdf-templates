@@ -28,15 +28,10 @@ class XMLParser {
                 when (qName) {
                     "document" -> content.push(Document())
                     "page" -> content.push(Page())
-                    "table" -> {
-                        if(content.peek() is Row) {
-                            content.push(TableCell())
-                        }else{
-                            content.push(Table())
-                        }
-                    }
+                    "table" -> content.push(Table())
                     "row" -> content.push(Row())
                     "text" -> content.push(TextCell())
+                    "blank" -> content.push(BlankCell())
                     "image" -> content.push(ImageCell())
                     else -> println("ERROR: Unknown Element $qName")
                 }
@@ -51,7 +46,7 @@ class XMLParser {
                     "page" -> (content.peek() as NestedContent).content.add(top)
                     "table" -> (content.peek() as NestedContent).content.add(top)
                     "row" -> (content.peek() as NestedContent).content.add(top)
-                    "image", "text" -> {
+                    "image", "text", "blank" -> {
                         (top as ContentCell).content = builder.toString().trim()
                         (content.peek() as NestedContent).content.add(top)
                     }
@@ -66,6 +61,15 @@ class XMLParser {
             }
 
             fun copyAttributes(c: Content, attributes: org.xml.sax.Attributes){
+                val layout = attributes.getValue("layout")
+                if (c is Table && layout != null) {
+                    c.layout = layout
+                        .split(Regex("[ ,|]"))
+                        .toTypedArray()
+                        .map { it.toFloat() }
+                        .toFloatArray()
+                }
+
                 if (attributes.getValue("fontSize") != null) {
                     c.fontSize = attributes.getValue("fontSize").toFloat()
                 }

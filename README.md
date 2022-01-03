@@ -2,12 +2,7 @@
 
 # TODO
 ## Cleanup
-2. [ ] abstract 'draw children out'
-3. [ ] borders on nested tables are double width
-4. [ ] properties on draw context and cell ... confusing
-5. [ ] conv methods for parse method
-6. [ ] remove handlebars from dependencies
-7. [X] ImageCell and TextCell - superclass to abstract out in parser
+1. Fix when missing some cells in a row
 
 ## Features
 5. [ ] add template engine support (freemarker, handlebars, etc)
