@@ -1,4 +1,27 @@
 # pdf-templates
+PDF Templates is a simple XML to PDF conversion tool.  The layout 
+is table based, including nested tables.  Additional flexibility 
+can be added using a template engine to preprocess the document.
+Handlebars is included as a preprocessing engine.
+
+
+```xml
+<document>
+    <page>
+        <table padding="10">
+            <row>
+                <text>column next to a nested table with 50% of the space</text>
+                <table layout="30 70">
+                    <row>
+                        <text>cell with 30%</text>
+                        <text>this is longer text given 70% of the nested table space</text>
+                    </row>
+                </table>
+            </row>
+        </table>
+    </page>
+</document>
+```
 
 # TODO
 ## Cleanup
