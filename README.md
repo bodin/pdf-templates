@@ -79,8 +79,8 @@ layout = "int int*"
 fontName = "string"
   font name that is known to OpenPDF
   
-fontColor = "red|green|..."
-  color name known to java.awt.Color as a field
+fontColor = "red|green|..." or "#RRGGBB"
+  color name known to java.awt.Color as a field or hex value
   
 fontSize = "int"
   size in points of font
@@ -88,8 +88,8 @@ fontSize = "int"
 fontStyle = "bold | italic | strikethrough | underline"
   font style
   
-backgroundColor = "red|green|..."
-  color name known to java.awt.Color as a field
+backgroundColor = "red|green|..." or "#RRGGBB"
+  color name known to java.awt.Color as a field or hex value
   
 padding = "int"
   padding dimension for all sides
@@ -131,4 +131,5 @@ For example if we want a cell with padding and then a full bordered table.
 13. [ ] font style - if a table is bold, and a cell is italics - should it 
 combine or change?
 14. [ ] Add CLI Main class
-15. [ ] Add RGB colors
+15. [x] Add RGB colors
+16. [ ] allow 'dash based' attribute names

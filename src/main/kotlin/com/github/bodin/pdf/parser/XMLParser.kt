@@ -107,11 +107,15 @@ class XMLParser {
         return content.pop() as Document
     }
     private fun color(s : String): Color? {
-        return try {
-            Class.forName("java.awt.Color")?.getField(s)?.get(null) as Color
-        } catch(e: Exception) {
-            log.error(e.message, e)
-            null
+        if(s.startsWith("#")){
+            return Color.decode(s);
+        }else {
+            return try {
+                Class.forName("java.awt.Color")?.getField(s)?.get(null) as Color
+            } catch (e: Exception) {
+                log.error(e.message, e)
+                return null
+            }
         }
     }
     private fun layout(s: String): FloatArray? {

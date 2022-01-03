@@ -2,7 +2,7 @@
     <page>
         <table>
             <row>
-                <text fontColor="blue">
+                <text fontColor="#00FF00">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <text fontColor="blue">
