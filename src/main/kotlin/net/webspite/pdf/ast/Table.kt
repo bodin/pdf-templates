@@ -30,7 +30,6 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
 
         ctx.tables.pop()
 
-
         this.styleCell(table)
 
         if(ctx.tables.isEmpty()) {
@@ -38,6 +37,11 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
         } else {
             val cell = PdfPCell(table)
             this.styleCell(cell)
+            // TODO remove with wrapper cell option
+            cell.paddingTop = 0f
+            cell.paddingBottom = 0f
+            cell.paddingLeft = 0f
+            cell.paddingRight = 0f
             ctx.tables.peek()?.addCell(cell)
         }
     }

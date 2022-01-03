@@ -27,21 +27,19 @@ abstract class Content {
     }
 
     fun copyTo(c: Content){
-        this.fontSize?.let{ c.fontSize = it }
 
-        this.colorFill?.let{ c.colorFill = it }
-        this.colorText?.let{ c.colorText = it }
+        if(c.fontSize == null) c.fontSize = this.fontSize
+        if(c.colorFill == null) c.colorFill = this.colorFill
+        if(c.colorText == null) c.colorText = this.colorText
 
-        this.paddingTop?.let{ c.paddingTop = it }
-        this.paddingBottom?.let{ c.paddingBottom = it }
-        this.paddingLeft?.let{ c.paddingLeft = it }
-        this.paddingRight?.let{ c.paddingRight = it }
+        if(c.paddingTop == null) c.paddingTop = this.paddingTop
+        if(c.paddingBottom == null) c.paddingBottom = this.paddingBottom
+        if(c.paddingLeft == null) c.paddingLeft = this.paddingLeft
+        if(c.paddingRight == null) c.paddingRight = this.paddingRight
     }
 
 
     fun styleCell(cell: PdfPCell){
-        cell.horizontalAlignment= Element.ALIGN_RIGHT
-        cell.verticalAlignment= Element.ALIGN_BOTTOM
         this.colorFill?.let{ cell.backgroundColor = it }
 
         this.paddingTop?.let{ cell.paddingTop = it }

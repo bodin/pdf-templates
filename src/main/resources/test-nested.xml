@@ -14,7 +14,7 @@
                 <text>c</text>
                 <table fontSize="18" width="75%" colorFill="red">
                     <row>
-                        <text>a</text>
+                        <text colorFill="blue" >a</text>
                         <text>b</text>
                     </row>
                 </table>
