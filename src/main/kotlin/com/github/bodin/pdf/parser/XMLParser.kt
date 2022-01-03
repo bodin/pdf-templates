@@ -68,32 +68,32 @@ class XMLParser {
                     val value = attributes.getValue(i);
                     when (name) {
                         "layout" -> if (c is Table) c.layout = layout(value)
-                        "fontName" -> c.fontName = value
-                        "fontSize" -> c.fontSize = value.toFloat()
-                        "fontStyle" -> when(value){
+                        "fontName", "font-name" -> c.fontName = value
+                        "fontSize", "font-size" -> c.fontSize = value.toFloat()
+                        "fontStyle", "font-style" -> when(value){
                             "bold" -> c.fontStyle = Font.BOLD
                             "strikethrough" -> c.fontStyle = Font.STRIKETHRU
                             "italic" -> c.fontStyle = Font.ITALIC
                             "underline" -> c.fontStyle = Font.UNDERLINE
                         }
-                        "fontColor" -> c.fontColor = color(value)
-                        "backgroundColor" -> c.backgroundColor = color(value)
-                        "paddingTop" -> c.paddingTop = value.toFloat()
-                        "paddingBottom" -> c.paddingBottom = value.toFloat()
-                        "paddingLeft" -> c.paddingLeft = value.toFloat()
-                        "paddingRight" -> c.paddingRight = value.toFloat()
+                        "fontColor", "font-color" -> c.fontColor = color(value)
+                        "backgroundColor", "background-color" -> c.backgroundColor = color(value)
+                        "paddingTop", "padding-top" -> c.paddingTop = value.toFloat()
+                        "paddingBottom", "padding-bottom"  -> c.paddingBottom = value.toFloat()
+                        "paddingLeft", "padding-left"  -> c.paddingLeft = value.toFloat()
+                        "paddingRight", "padding-right"  -> c.paddingRight = value.toFloat()
                         "padding" -> {
                             c.paddingTop = value.toFloat()
                             c.paddingBottom = value.toFloat()
                             c.paddingLeft = value.toFloat()
                             c.paddingRight = value.toFloat()
                         }
-                        "alignV" -> when(value){
+                        "alignVertical", "align-vertical" -> when(value){
                             "top" -> c.alignV = Element.ALIGN_TOP
                             "middle" -> c.alignV = Element.ALIGN_MIDDLE
                             "bottom" -> c.alignV = Element.ALIGN_BOTTOM
                         }
-                        "alignH" -> when(value){
+                        "alignHorizontal", "align-horizontal"-> when(value){
                             "left" -> c.alignH = Element.ALIGN_LEFT
                             "center" -> c.alignH = Element.ALIGN_CENTER
                             "right" -> c.alignH = Element.ALIGN_RIGHT

@@ -67,9 +67,11 @@ row      := text+ | image+ | table+
 ```
 
 ## Attributes
-Attributes by default cascaade syntactically down into their children.  Specifying 
+Attributes by default cascade syntactically down into their children.  Specifying 
 `fontColor="red"` on a table will mean every `text` cell is printed in red font - 
 unless another parent changes it between the `table` and `text` cell.
+
+**All attributes can be written in camel case, or dash syntax.  `paddingTop` or `padding-top`**
 
 ```
 layout = "int int*"  
@@ -106,10 +108,10 @@ paddingLeft = "int"
 paddingRight = "int"
   padding dimension for right
 
-alignV = "top | middle | bottom"
+alignVertical = "top | middle | bottom"
   vertical alignment  
                             
-alignH = "left | center | right"
+alignHorizontal = "left | center | right"
   horizontal alignment                            
 ```
 
@@ -117,19 +119,23 @@ alignH = "left | center | right"
 # TODO
 ## Cleanup
 1. [x] Fix when missing some cells in a row
+2. [ ] proper test cases, moving resources to test folder
 
 ## Features
-5. [x] add template engine support (freemarker, handlebars, etc)
+### Not Done
 6. [ ] TOC
 7. [ ] Font (all in one directive)
 8. [ ] bold, italic, etc
-9. [x] image cell
-10. [ ] image loading by generic protocol (https, file, classpath)
-11. [ ] add a 'cell' markup so we can style the cell of nested content. 
+9. [ ] image loading by generic protocol (https, file, classpath)
+10. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-12. [ ] font style - how do you apply multiple
-13. [ ] font style - if a table is bold, and a cell is italics - should it 
+11. [ ] font style - how do you apply multiple
+12. [ ] font style - if a table is bold, and a cell is italics - should it 
 combine or change?
-14. [ ] Add CLI Main class
-15. [x] Add RGB colors
-16. [ ] allow 'dash based' attribute names
+13. [ ] Add CLI Main class 
+
+### Done
+14. [x] allow 'dash based' attribute names
+15. [x] add template engine support (freemarker, handlebars, etc)
+16. [x] image cell
+17. [x] Add RGB colors
