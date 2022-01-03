@@ -2,7 +2,7 @@
     <page>
         <table>
             <row>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table fontSize="18" width="75%" backgroundColor="red">
                     <row>
                         <table>
                             <row>
@@ -52,7 +52,7 @@
     <page>
         <table>
             <row>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table fontSize="18" width="75%" backgroundColor="red">
                     <row>
                         <table>
                             <row>

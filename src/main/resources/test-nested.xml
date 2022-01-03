@@ -12,16 +12,16 @@
             </row>
             <row>
                 <text fontName="Courier" fontSize="26" fontStyle="bold" fontColor="green">c</text>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table fontSize="18" width="75%" backgroundColor="red">
                     <row>
-                        <text colorFill="blue" >a</text>
+                        <text backgroundColor="blue" >a</text>
                         <text>b</text>
                     </row>
                 </table>
             </row>
             <row>
                 <text>c</text>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table fontSize="18" width="75%" backgroundColor="red">
                     <row>
                         <text>a</text>
                         <text>b</text>

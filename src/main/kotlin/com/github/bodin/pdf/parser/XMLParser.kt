@@ -1,8 +1,8 @@
-package net.webspite.pdf.parser
+package com.github.bodin.pdf.parser
 
+import com.github.bodin.pdf.ast.*
 import com.lowagie.text.Element
 import com.lowagie.text.Font
-import net.webspite.pdf.ast.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.xml.sax.helpers.DefaultHandler
@@ -77,7 +77,7 @@ class XMLParser {
                             "underline" -> c.fontStyle = Font.UNDERLINE
                         }
                         "fontColor" -> c.fontColor = color(value)
-                        "colorFill" -> c.colorFill = color(value)
+                        "backgroundColor" -> c.backgroundColor = color(value)
                         "paddingTop" -> c.paddingTop = value.toFloat()
                         "paddingBottom" -> c.paddingBottom = value.toFloat()
                         "paddingLeft" -> c.paddingLeft = value.toFloat()

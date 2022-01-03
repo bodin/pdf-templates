@@ -1,57 +1,39 @@
-import com.github.jknack.handlebars.Handlebars
-import com.github.jknack.handlebars.Template
-import com.github.jknack.handlebars.io.ClassPathTemplateLoader
-import com.github.jknack.handlebars.io.TemplateLoader
-import net.webspite.pdf.parser.XMLParser
+import com.github.bodin.pdf.TemplateEngine
+import com.github.bodin.pdf.api.ResourceLoader
+import com.github.bodin.pdf.pre.handlebars.HandlebarsProcessor
 import java.io.FileOutputStream
+import java.nio.file.Paths
 
 
-fun main(args: Array<String>) {
-    basic()
-    //handlebars()
-}
-fun basic(){
-    Thread.currentThread().contextClassLoader?.getResource("test-nested.xml")?.openStream().use {
-        if(it != null) {
-            val node = XMLParser().parse(it)
-            node.write(FileOutputStream("build/test-nested.pdf"))
-        }
+fun main() {
+
+    val src = "${Paths.get("").toAbsolutePath().toString()}/src/main/resources"
+
+    val engine = TemplateEngine(
+        processor = HandlebarsProcessor(),
+        loader = ResourceLoader.Default
+    )
+
+    // classpath
+    FileOutputStream("build/test-simple.pdf").use {
+        engine.executeFile("classpath://test-simple.xml", it)
+    }
+    // uri
+    FileOutputStream("build/test-image.pdf").use {
+        engine.executeFile("file://$src/test-image.xml", it)
+    }
+    // absolute
+    FileOutputStream("build/test-nested.pdf").use {
+        engine.executeFile("$src/test-nested.xml", it)
+    }
+    // relative
+    FileOutputStream("build/test-hard.pdf").use {
+        engine.executeFile("src/main/resources/test-hard.xml", it)
     }
 
-    /*
-    Thread.currentThread().contextClassLoader?.getResource("test-simple.xml")?.openStream().use {
-        if(it != null) {
-            val node = XMLParser().parse(it)
-            node.write(FileOutputStream("build/test-simple.pdf"))
-        }
-    }
-
-
-
-    Thread.currentThread().contextClassLoader?.getResource("test-image.xml")?.openStream().use {
-        if(it != null) {
-            val node = XMLParser().parse(it)
-            node.write(FileOutputStream("build/test-image.pdf"))
-        }
-    }
-
-    Thread.currentThread().contextClassLoader?.getResource("test-hard.xml")?.openStream().use {
-        if(it != null) {
-            val node = XMLParser().parse(it)
-            node.write(FileOutputStream("build/test-hard.pdf"))
-        }
-    }
-    */
-
-}
-fun handlebars(){
-    val loader: TemplateLoader = ClassPathTemplateLoader("/", ".xml")
-    val handlebars = Handlebars().with(loader)
-
-    val template: Template = handlebars.compile("test-nested.hb")
-println( template.apply(listOf("a", "b", "c")))
-    template.apply(listOf("a", "b", "c")).byteInputStream().use {
-        val node = XMLParser().parse(it)
-        node.write(FileOutputStream("build/test-nested.hb.pdf"))
+    //with handlebars preprocessing
+    FileOutputStream("build/test-nested.hb.pdf").use {
+        var ctx = arrayOf("val1", "val2")
+        engine.executeFile(ctx, "classpath://test-nested.hb.xml", it)
     }
 }

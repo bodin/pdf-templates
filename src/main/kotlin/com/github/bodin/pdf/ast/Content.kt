@@ -1,11 +1,8 @@
-package net.webspite.pdf.ast
+package com.github.bodin.pdf.ast
 
-import com.lowagie.text.Font
-import com.lowagie.text.FontFactory
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
-import net.webspite.pdf.model.DrawContext
 import java.awt.Color
 
 
@@ -19,7 +16,7 @@ abstract class Content {
     var alignH: Int? = null
     var alignV: Int? = null
 
-    var colorFill: Color? = null
+    var backgroundColor: Color? = null
     var paddingTop: Float? = null
     var paddingBottom: Float? = null
     var paddingLeft: Float? = null
@@ -38,7 +35,7 @@ abstract class Content {
         if(c.fontStyle == null) c.fontStyle = this.fontStyle
         if(c.fontColor == null) c.fontColor = this.fontColor
 
-        if(c.colorFill == null) c.colorFill = this.colorFill
+        if(c.backgroundColor == null) c.backgroundColor = this.backgroundColor
         if(c.fontColor == null) c.fontColor = this.fontColor
 
         if(c.paddingTop == null) c.paddingTop = this.paddingTop
@@ -49,7 +46,7 @@ abstract class Content {
 
 
     fun styleCell(cell: PdfPCell){
-        this.colorFill?.let{ cell.backgroundColor = it }
+        this.backgroundColor?.let{ cell.backgroundColor = it }
 
         this.paddingTop?.let{ cell.paddingTop = it }
         this.paddingBottom?.let{ cell.paddingBottom = it }
@@ -58,7 +55,7 @@ abstract class Content {
     }
 
     fun styleCell(cell: Image){
-        if(this.colorFill != null) cell.backgroundColor = this.colorFill
+        if(this.backgroundColor != null) cell.backgroundColor = this.backgroundColor
     }
 
     fun styleCell(cell: PdfPTable){

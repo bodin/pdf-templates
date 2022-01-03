@@ -1,10 +1,9 @@
-package net.webspite.pdf.model
+package com.github.bodin.pdf.ast
 
 import com.lowagie.text.Document
 import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
 import com.lowagie.text.pdf.PdfPTable
-import net.webspite.pdf.ast.Content
 import java.awt.Color
 import java.util.*
 

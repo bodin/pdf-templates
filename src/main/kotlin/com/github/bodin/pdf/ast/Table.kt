@@ -1,9 +1,7 @@
-package net.webspite.pdf.ast
+package com.github.bodin.pdf.ast
 
-import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
-import net.webspite.pdf.model.DrawContext
 import org.slf4j.LoggerFactory
 
 class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content as MutableList<Content>) {

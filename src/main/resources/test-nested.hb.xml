@@ -4,7 +4,7 @@
             {{#each this}}
                 <row fontSize="18">
                     <text>{{this}}</text>
-                    <table fontSize="18" width="75%" colorFill="red">
+                    <table fontSize="18" width="75%" backgroundColor="red">
                         <row>
                             <text>nested</text>
                             <text>table</text>
@@ -17,7 +17,7 @@
             {{#each this}}
             <row fontSize="18">
                 <text>{{this}}</text>
-                <table fontSize="18" width="75%" colorFill="red">
+                <table fontSize="18" width="75%" backgroundColor="red">
                     <row>
                         <text>nested</text>
                         <text>table</text>

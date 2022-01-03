@@ -1,7 +1,6 @@
-package net.webspite.pdf.ast
+package com.github.bodin.pdf.ast
 
 import com.lowagie.text.pdf.PdfPCell
-import net.webspite.pdf.model.DrawContext
 
 class Row(content: MutableList<ContentCell> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
     var expectedCells: Int = 0

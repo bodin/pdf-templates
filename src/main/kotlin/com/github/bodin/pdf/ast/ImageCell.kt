@@ -1,7 +1,6 @@
-package net.webspite.pdf.ast
+package com.github.bodin.pdf.ast
 
 import com.lowagie.text.Image
-import net.webspite.pdf.model.DrawContext
 import java.net.URI
 
 class ImageCell(content: String = ""): ContentCell(content) {

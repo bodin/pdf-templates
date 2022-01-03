@@ -1,6 +1,4 @@
-package net.webspite.pdf.ast
-
-import net.webspite.pdf.model.DrawContext
+package com.github.bodin.pdf.ast
 
 abstract class NestedContent(var content: MutableList<Content>): Content() {
     fun drawChildren(ctx: DrawContext) {
