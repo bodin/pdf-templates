@@ -69,7 +69,7 @@ class XMLParser {
                         "layout" -> if (c is Table) c.layout = layout(value)
                         "fontSize" -> c.fontSize = value.toFloat()
                         "colorFill" -> c.colorFill = color(value)
-                        "colorText" -> c.colorText = color(value)
+                        "fontColor" -> c.fontColor = color(value)
                         "paddingTop" -> c.paddingTop = value.toFloat()
                         "paddingBottom" -> c.paddingBottom = value.toFloat()
                         "paddingLeft" -> c.paddingLeft = value.toFloat()

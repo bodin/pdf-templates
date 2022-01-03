@@ -13,7 +13,7 @@
                         <text>c</text>
                     </row>
                 </table>
-                <text colorText="blue">
+                <text fontColor="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <table>
@@ -63,7 +63,7 @@
                         <text>c</text>
                     </row>
                 </table>
-                <text colorText="blue">
+                <text fontColor="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <table>

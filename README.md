@@ -11,4 +11,5 @@
 8. [ ] bold, italic, etc
 9. [x] image cell
 10. [ ] image loading by generic protocol (https, file, classpath)
-
+11. [ ] add a 'cell' markup so we can style the cell of nested content. 
+For example if we want a cell with padding and then a full bordered table.

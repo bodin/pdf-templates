@@ -1,7 +1,5 @@
 package net.webspite.pdf.ast
 
-import com.lowagie.text.Chunk
-import com.lowagie.text.Element
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
@@ -13,7 +11,7 @@ abstract class Content {
     var fontSize: Float = 0f
     var alignH: Int? = null
     var alignV: Int? = null
-    var colorText: Color? = null
+    var fontColor: Color? = null
     var colorFill: Color? = null
     var paddingTop: Float? = null
     var paddingBottom: Float? = null
@@ -30,7 +28,7 @@ abstract class Content {
 
         if(c.fontSize == null) c.fontSize = this.fontSize
         if(c.colorFill == null) c.colorFill = this.colorFill
-        if(c.colorText == null) c.colorText = this.colorText
+        if(c.fontColor == null) c.fontColor = this.fontColor
 
         if(c.paddingTop == null) c.paddingTop = this.paddingTop
         if(c.paddingBottom == null) c.paddingBottom = this.paddingBottom
