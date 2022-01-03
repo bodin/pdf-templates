@@ -8,9 +8,17 @@ import java.io.FileOutputStream
 
 fun main(args: Array<String>) {
     basic()
-    handlebars()
+    //handlebars()
 }
 fun basic(){
+    Thread.currentThread().contextClassLoader?.getResource("test-nested.xml")?.openStream().use {
+        if(it != null) {
+            val node = XMLParser().parse(it)
+            node.write(FileOutputStream("build/test-nested.pdf"))
+        }
+    }
+
+    /*
     Thread.currentThread().contextClassLoader?.getResource("test-simple.xml")?.openStream().use {
         if(it != null) {
             val node = XMLParser().parse(it)
@@ -18,12 +26,7 @@ fun basic(){
         }
     }
 
-    Thread.currentThread().contextClassLoader?.getResource("test-nested.xml")?.openStream().use {
-        if(it != null) {
-            val node = XMLParser().parse(it)
-            node.write(FileOutputStream("build/test-nested.pdf"))
-        }
-    }
+
 
     Thread.currentThread().contextClassLoader?.getResource("test-image.xml")?.openStream().use {
         if(it != null) {
@@ -38,6 +41,8 @@ fun basic(){
             node.write(FileOutputStream("build/test-hard.pdf"))
         }
     }
+    */
+
 }
 fun handlebars(){
     val loader: TemplateLoader = ClassPathTemplateLoader("/", ".xml")

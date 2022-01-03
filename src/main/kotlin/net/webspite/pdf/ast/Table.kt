@@ -1,5 +1,7 @@
 package net.webspite.pdf.ast
 
+import com.lowagie.text.Phrase
+import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
 import net.webspite.pdf.model.DrawContext
 import org.slf4j.LoggerFactory
@@ -10,7 +12,6 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
 
     override fun draw(ctx: DrawContext) {
         val cells = this.content.maxOf { it.cells() }
-
 
         if(layout == null){
             layout = FloatArray(cells)
@@ -28,10 +29,16 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
         this.drawChildren(ctx)
 
         ctx.tables.pop()
+
+
+        this.styleCell(table)
+
         if(ctx.tables.isEmpty()) {
             ctx.document?.add(table)
         } else {
-            ctx.tables.peek()?.addCell(table)
+            val cell = PdfPCell(table)
+            this.styleCell(cell)
+            ctx.tables.peek()?.addCell(cell)
         }
     }
 }

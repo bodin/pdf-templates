@@ -1,5 +1,6 @@
 package net.webspite.pdf.parser
 
+import com.lowagie.text.Element
 import net.webspite.pdf.ast.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -60,47 +61,56 @@ class XMLParser {
                 }
             }
 
-            fun copyAttributes(c: Content, attributes: org.xml.sax.Attributes){
-                val layout = attributes.getValue("layout")
-                if (c is Table && layout != null) {
-                    c.layout = layout
-                        .split(Regex("[ ,|]"))
-                        .toTypedArray()
-                        .map { it.toFloat() }
-                        .toFloatArray()
-                }
-
-                if (attributes.getValue("fontSize") != null) {
-                    c.fontSize = attributes.getValue("fontSize").toFloat()
-                }
-                when(attributes.getValue("alignH")){
-                    //"left" -> c.alignH = HorizontalAlignment.LEFT
-                    //"right" -> c.alignH = HorizontalAlignment.RIGHT
-                    //"center" -> c.alignH = HorizontalAlignment.CENTER
-                }
-                when(attributes.getValue("alignV")){
-                    //"bottom" -> c.alignV = VerticalAlignment.BOTTOM
-                    //"top" -> c.alignV = VerticalAlignment.TOP
-                    //"middle" -> c.alignV = VerticalAlignment.MIDDLE
-                }
-
-                var color = attributes.getValue("colorFill")
-                try {
-                    c.colorFill = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
-                } catch (e: Exception) {
-                   log.error(e.message, e)
-                }
-
-                color = attributes.getValue("colorText")
-                try {
-                    c.colorText = Class.forName("java.awt.Color")?.getField(color)?.get(null) as Color
-                } catch (e: Exception) {
-                    log.error(e.message, e)
+            fun copyAttributes(c: Content, attributes: org.xml.sax.Attributes) {
+                for (i in 0..attributes.length) {
+                    val name = attributes.getLocalName(i)
+                    val value = attributes.getValue(i);
+                    when (name) {
+                        "layout" -> if (c is Table) c.layout = layout(value)
+                        "fontSize" -> c.fontSize = value.toFloat()
+                        "colorFill" -> c.colorFill = color(value)
+                        "colorText" -> c.colorText = color(value)
+                        "paddingTop" -> c.paddingTop = value.toFloat()
+                        "paddingBottom" -> c.paddingBottom = value.toFloat()
+                        "paddingLeft" -> c.paddingLeft = value.toFloat()
+                        "paddingRight" -> c.paddingRight = value.toFloat()
+                        "padding" -> {
+                            c.paddingTop = value.toFloat()
+                            c.paddingBottom = value.toFloat()
+                            c.paddingLeft = value.toFloat()
+                            c.paddingRight = value.toFloat()
+                        }
+                        "alignV" -> when(value){
+                            "top" -> c.alignV = Element.ALIGN_TOP
+                            "middle" -> c.alignV = Element.ALIGN_MIDDLE
+                            "bottom" -> c.alignV = Element.ALIGN_BOTTOM
+                        }
+                        "alignH" -> when(value){
+                            "left" -> c.alignH = Element.ALIGN_LEFT
+                            "center" -> c.alignH = Element.ALIGN_CENTER
+                            "right" -> c.alignH = Element.ALIGN_RIGHT
+                        }
+                    }
                 }
             }
         }
 
         saxParser.parse(stream, defaultHandler)
         return content.pop() as Document
+    }
+    private fun color(s : String): Color? {
+        return try {
+            Class.forName("java.awt.Color")?.getField(s)?.get(null) as Color
+        } catch(e: Exception) {
+            log.error(e.message, e)
+            null
+        }
+    }
+    private fun layout(s: String): FloatArray? {
+        return s
+            .split(Regex("[ ,|]"))
+            .toTypedArray()
+            .map { it.toFloat() }
+            .toFloatArray()
     }
 }
