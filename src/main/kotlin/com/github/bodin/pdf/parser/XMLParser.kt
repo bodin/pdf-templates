@@ -68,6 +68,7 @@ class XMLParser {
                     val value = attributes.getValue(i);
                     when (name) {
                         "layout" -> if (c is Table) c.layout = layout(value)
+                        "bookmark" -> c.bookmark = value
                         "fontName", "font-name" -> c.fontName = value
                         "fontSize", "font-size" -> c.fontSize = value.toFloat()
                         "fontStyle", "font-style" -> when(value){

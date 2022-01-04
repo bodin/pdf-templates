@@ -2,6 +2,7 @@ package com.github.bodin.pdf.ast
 
 import com.lowagie.text.Document
 import com.lowagie.text.PageSize
+import com.lowagie.text.pdf.PdfOutline
 import com.lowagie.text.pdf.PdfWriter
 import java.io.OutputStream
 
@@ -18,6 +19,7 @@ class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(con
         writer.isCloseStream = false
 
         ctx.document?.open()
+        ctx.outline = writer?.directContent?.rootOutline
         draw(ctx)
         ctx.document?.close()
     }

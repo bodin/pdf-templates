@@ -2,7 +2,7 @@
     <page>
         <table>
             <row>
-                <text fontColor="#00FF00">
+                <text fontColor="#00FF00" bookmark="1">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <text fontColor="blue">
@@ -14,7 +14,7 @@
             </row>
             <row>
                 <blank/>
-                <text fontColor="blue">
+                <text fontColor="blue" bookmark="2">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <blank/>

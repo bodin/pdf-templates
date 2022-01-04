@@ -7,6 +7,9 @@ import java.awt.Color
 
 
 abstract class Content {
+
+    var bookmark :String? = null
+
     //Preferences
     var fontName: String? = null
     var fontSize: Float? = null
@@ -29,7 +32,6 @@ abstract class Content {
     }
 
     fun copyTo(c: Content){
-
         if(c.fontName == null) c.fontName = this.fontName
         if(c.fontSize == null) c.fontSize = this.fontSize
         if(c.fontStyle == null) c.fontStyle = this.fontStyle

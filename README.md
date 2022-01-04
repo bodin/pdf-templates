@@ -77,6 +77,9 @@ unless another parent changes it between the `table` and `text` cell.
 layout = "int int*"  
   non cascading, only available on 'table'
   Represents the number of colums and their propartion relative to each other.
+bookmark = "string"
+  cascades down to the first `text` cell
+  This represents an entry in the PDF outline that can be used by a user to navigate 
   
 fontName = "string"
   font name that is known to OpenPDF
@@ -123,7 +126,7 @@ alignHorizontal = "left | center | right"
 
 ## Features
 ### Not Done
-6. [ ] TOC
+
 7. [ ] Font (all in one directive)
 8. [ ] bold, italic, etc
 9. [ ] image loading by generic protocol (https, file, classpath)
@@ -135,6 +138,7 @@ combine or change?
 13. [ ] Add CLI Main class 
 
 ### Done
+6. [x] TOC
 14. [x] allow 'dash based' attribute names
 15. [x] add template engine support (freemarker, handlebars, etc)
 16. [x] image cell
