@@ -76,6 +76,7 @@ class XMLParser {
                             "strikethrough" -> c.fontStyle = Font.STRIKETHRU
                             "italic" -> c.fontStyle = Font.ITALIC
                             "underline" -> c.fontStyle = Font.UNDERLINE
+                            "normal" -> c.fontStyle = Font.NORMAL
                         }
                         "fontColor", "font-color" -> color(value)?.let { c.fontColor = it }
                         "backgroundColor", "background-color" ->  color(value)?.let { c.backgroundColor = it }

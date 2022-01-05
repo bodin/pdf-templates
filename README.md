@@ -75,6 +75,7 @@ unless another parent changes it between the `table` and `text` cell.
 
 ```
 layout = "int int*"  
+  * defaults to an even split 
   non cascading, only available on 'table'
   Represents the number of colums and their propartion relative to each other.
 bookmark = "string"
@@ -82,54 +83,71 @@ bookmark = "string"
   This represents an entry in the PDF outline that can be used by a user to navigate 
   
 fontName = "string"
+  * defaults to Helvetica
   font name that is known to OpenPDF
   
 fontColor = "red|green|..." or "#RRGGBB"
+  * defaults to Black
   color name known to java.awt.Color as a field or hex value
   
 fontSize = "int"
+  * defaults to 12
   size in points of font
   
-fontStyle = "bold | italic | strikethrough | underline"
+fontStyle = "bold | italic | strikethrough | underline | normal"
+  * defaults to normal
   font style
   
 backgroundColor = "red|green|..." or "#RRGGBB"
+  * defaults to White
   color name known to java.awt.Color as a field or hex value
 
 border = "size color" | "size" | "color" | "color size"
+  * defaults to 0 black
   applies border styling to all sides of the cell
 
 borderTop = "size color" | "size" | "color" | "color size"
+  * defaults to 0 black
   applies border styling to the top side of the cell
   
 borderBottom = "size color" | "size" | "color" | "color size"
+  * defaults to 0 black
   applies border styling to the bottom side of the cell
   
 borderLeft = "size color" | "size" | "color" | "color size"
+  * defaults to 0 black
   applies border styling to the left side of the cell
   
 borderRight = "size color" | "size" | "color" | "color size"
+  * defaults to 0 black
   applies border styling to the right side of the cell  
   
 padding = "int"
+  * defaults to 0
   padding dimension for all sides
   
 paddingTop = "int"
+  * defaults to 0
   padding dimension for top
   
 paddingBottom = "int"
+  * defaults to 0
   padding dimension for bottom
   
 paddingLeft = "int"
+  * defaults to 0
   padding dimension for left
   
 paddingRight = "int"
+  * defaults to 0
   padding dimension for right
 
 alignVertical = "top | middle | bottom"
+  * defaults to middle
   vertical alignment  
                             
 alignHorizontal = "left | center | right"
+  * defaults to left
   horizontal alignment                            
 ```
 
@@ -154,7 +172,7 @@ For example if we want a cell with padding and then a full bordered table.
 combine or change?
 10. [ ] Add CLI Main class 
 11. [ ] image width and height
-12. [ ] Set default values
+
 
 ### Done
 2. [x] Border properties
@@ -163,3 +181,4 @@ combine or change?
 15. [x] add template engine support (freemarker, handlebars, etc)
 16. [x] image cell
 17. [x] Add RGB colors
+12. [x] Set default values
