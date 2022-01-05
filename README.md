@@ -95,6 +95,21 @@ fontStyle = "bold | italic | strikethrough | underline"
   
 backgroundColor = "red|green|..." or "#RRGGBB"
   color name known to java.awt.Color as a field or hex value
+
+border = "size color" | "size" | "color" | "color size"
+  applies border styling to all sides of the cell
+
+borderTop = "size color" | "size" | "color" | "color size"
+  applies border styling to the top side of the cell
+  
+borderBottom = "size color" | "size" | "color" | "color size"
+  applies border styling to the bottom side of the cell
+  
+borderLeft = "size color" | "size" | "color" | "color size"
+  applies border styling to the left side of the cell
+  
+borderRight = "size color" | "size" | "color" | "color size"
+  applies border styling to the right side of the cell  
   
 padding = "int"
   padding dimension for all sides
@@ -126,18 +141,23 @@ alignHorizontal = "left | center | right"
 
 ## Features
 ### Not Done
-
-7. [ ] Font (all in one directive)
-8. [ ] bold, italic, etc
-9. [ ] image loading by generic protocol (https, file, classpath)
-10. [ ] add a 'cell' markup so we can style the cell of nested content. 
+1. [ ] Headers and Footers (document level and override at the page level)
+2. [ ] margin properties
+3. [ ] page numbering options
+4. [ ] Font (all in one directive)
+5. [ ] bold, italic, etc
+6. [ ] image loading by generic protocol (https, file, classpath)
+7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-11. [ ] font style - how do you apply multiple
-12. [ ] font style - if a table is bold, and a cell is italics - should it 
+8. [ ] font style - how do you apply multiple
+9. [ ] font style - if a table is bold, and a cell is italics - should it 
 combine or change?
-13. [ ] Add CLI Main class 
+10. [ ] Add CLI Main class 
+11. [ ] image width and height
+12. [ ] Set default values
 
 ### Done
+2. [x] Border properties
 6. [x] TOC
 14. [x] allow 'dash based' attribute names
 15. [x] add template engine support (freemarker, handlebars, etc)

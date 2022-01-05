@@ -77,8 +77,8 @@ class XMLParser {
                             "italic" -> c.fontStyle = Font.ITALIC
                             "underline" -> c.fontStyle = Font.UNDERLINE
                         }
-                        "fontColor", "font-color" -> c.fontColor = color(value)
-                        "backgroundColor", "background-color" -> c.backgroundColor = color(value)
+                        "fontColor", "font-color" -> color(value)?.let { c.fontColor = it }
+                        "backgroundColor", "background-color" ->  color(value)?.let { c.backgroundColor = it }
                         "paddingTop", "padding-top" -> c.paddingTop = value.toFloat()
                         "paddingBottom", "padding-bottom"  -> c.paddingBottom = value.toFloat()
                         "paddingLeft", "padding-left"  -> c.paddingLeft = value.toFloat()
@@ -99,6 +99,16 @@ class XMLParser {
                             "center" -> c.alignH = Element.ALIGN_CENTER
                             "right" -> c.alignH = Element.ALIGN_RIGHT
                         }
+                        "borderTop", "border-top" -> border(value) {cl:Color?, s:Float? -> c.borderColorTop = cl; c.borderWidthTop = s}
+                        "borderBottom", "border-bottom" -> border(value) {cl:Color?, s:Float? -> c.borderColorBottom = cl; c.borderWidthBottom = s}
+                        "borderLeft", "border-left" -> border(value) {cl:Color?, s:Float? -> c.borderColorLeft = cl; c.borderWidthLeft = s}
+                        "borderRight", "border-right" -> border(value) {cl:Color?, s:Float? -> c.borderColorRight = cl; c.borderWidthRight = s}
+                        "border" -> border(value) {cl:Color?, s:Float? ->
+                            c.borderColorTop = cl; c.borderWidthTop = s
+                            c.borderColorBottom = cl; c.borderWidthBottom = s
+                            c.borderColorLeft = cl; c.borderWidthLeft = s
+                            c.borderColorRight = cl; c.borderWidthRight = s
+                        }
                     }
                 }
             }
@@ -106,6 +116,18 @@ class XMLParser {
 
         saxParser.parse(stream, defaultHandler)
         return content.pop() as Document
+    }
+    private fun border(value:String, f: (Color?, Float?) -> Unit) {
+        var c: Color? = null
+        var s: Float? = null
+
+        value.split(Regex("[ ,|]")).forEach{
+            var tmpC = color(it)
+            var tmpS = it.toFloatOrNull()
+            if(c == null) c = tmpC
+            if(s == null) s = tmpS
+        }
+        f.invoke(c, s)
     }
     private fun color(s : String): Color? {
         if(s.startsWith("#")){

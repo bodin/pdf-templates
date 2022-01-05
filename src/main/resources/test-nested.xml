@@ -1,6 +1,6 @@
 <document>
     <page>
-        <table layout="20 80" padding="10">
+        <table layout="20 80" padding="10" border="1 red" border-left="green 10">
             <row >
                 <text>c</text>
                 <table layout="20 80">
