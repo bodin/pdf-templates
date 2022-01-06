@@ -183,6 +183,9 @@ height = "int"
   only available on image
   sets the image height
    
+colspan = "int"
+  non cascading, only available on `cells`
+  sets the number of columns to use   
 ```
 
 
@@ -196,7 +199,7 @@ height = "int"
 
 ## Features
 ### Not Done
-1. [ ] colspan
+
 2. [ ] DrawContext should be non-mutatable
 3. [ ] Headers and Footers (document level and override at the page level)
 4. [ ] page numbering options
@@ -209,17 +212,18 @@ For example if we want a cell with padding and then a full bordered table.
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
-6. [x] image loading by generic protocol (https, file, classpath)
-11. [x] image width and height
-2. [x] margin properties
-8. [x] font style - how do you apply multiple
-9. [x] bold, italic, etc
-10. [x] Border properties
-11. [x] TOC
-12. [x] allow 'dash based' attribute names
-13. [x] add template engine support (freemarker, handlebars, etc)
-14. [x] image cell
-15. [x] Add RGB colors
-16. [x] Set default values
-9. [x] font style - if a table is bold, and a cell is italics - should it
-       combine or change?
+1. [x] colspan
+7. [x] image loading by generic protocol (https, file, classpath)
+8. [x] image width and height
+9. [x] margin properties
+10. [x] font style - how do you apply multiple
+11. [x] bold, italic, etc
+12. [x] Border properties
+13. [x] TOC
+14. [x] allow 'dash based' attribute names
+15. [x] add template engine support (freemarker, handlebars, etc)
+16. [x] image cell
+17. [x] Add RGB colors
+18. [x] Set default values
+19. [x] font style - if a table is bold, and a cell is italics - should it
+        combine or change?

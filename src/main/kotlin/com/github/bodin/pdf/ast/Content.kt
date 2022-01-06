@@ -6,7 +6,9 @@ import com.lowagie.text.pdf.PdfPTable
 import java.awt.Color
 
 abstract class Content {
-    val DEFAULT_MARGIN = 36f
+    companion object {
+        const val DEFAULT_MARGIN = 36f
+    }
 
     var bookmark :String? = null
 
@@ -44,10 +46,12 @@ abstract class Content {
     var width: Float? = null
     var height: Float? = null
 
+    var colspan: Int? = null
+
     abstract fun draw(ctx: DrawContext)
 
     open fun cells(): Int {
-        return 1
+        return this.colspan?:1
     }
 
     fun copyTo(c: Content){
@@ -78,6 +82,8 @@ abstract class Content {
         if(c.borderColorBottom == null) c.borderColorBottom = this.borderColorBottom
         if(c.borderColorLeft == null) c.borderColorLeft = this.borderColorLeft
         if(c.borderColorRight == null) c.borderColorRight = this.borderColorRight
+
+        //if(c.colspan == null) c.colspan = this.colspan
     }
 
 
@@ -98,6 +104,7 @@ abstract class Content {
         this.borderWidthBottom?.let{cell.borderWidthBottom = it }
         this.borderWidthLeft?.let{cell.borderWidthLeft = it }
         this.borderWidthRight?.let{cell.borderWidthRight = it }
+        this.colspan?.let { cell.colspan = it }
     }
 
     fun styleCell(cell: Image){

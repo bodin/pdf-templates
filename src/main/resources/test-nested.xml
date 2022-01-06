@@ -20,8 +20,7 @@
                 </table>
             </row>
             <row>
-                <text>c</text>
-                <table fontSize="18" width="75%" backgroundColor="red">
+                <table fontSize="18" width="75%" backgroundColor="red" colspan="2">
                     <row>
                         <text>a</text>
                         <text>b</text>
