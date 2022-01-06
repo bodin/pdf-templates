@@ -12,8 +12,15 @@ class TemplateEngine(
     val loader: ResourceLoader = ResourceLoader.Default
 ) {
 
+    fun executeInline(template: String, out: OutputStream){
+        this.executeInline(null, template, out)
+    }
     fun executeInline(ctx:Any? = null, template: String, out: OutputStream){
-        this.executeInline(null, template.toByteArray(), out)
+        this.executeInline(ctx, template.toByteArray(), out)
+    }
+
+    fun executeInline(template: ByteArray, out: OutputStream){
+        this.executeInline(null, template, out)
     }
     fun executeInline(ctx:Any? = null, template: ByteArray, out: OutputStream){
         this.execute(ctx, TemplateSource.Inline(template), out)

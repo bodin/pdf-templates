@@ -199,7 +199,8 @@ colspan = "int"
 ## Cleanup
 ### Not Done
 2. [ ] proper test cases, moving resources to test folder
-
+3. [ ] DrawContext should be non-mutatable
+ 
 ### Done
 1. [x] Fix when missing some cells in a row
 
@@ -207,12 +208,11 @@ colspan = "int"
 ### Not Done
 2. [ ] allow paragraphs at the page level
 3. [ ] allow height on all elements (table, row, paragraph)
-4. [ ] DrawContext should be non-mutatable
 5. [ ] Headers and Footers (document level and override at the page level)
 6. [ ] page numbering options
 7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-8. [ ] Add CLI Main class 
+8. [ ] Add CLI Main class
 
 
 ### Won't do
