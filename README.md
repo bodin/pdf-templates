@@ -97,6 +97,14 @@ fontSize = "int"
 fontStyle = "bold | italic | strikethrough | underline | normal"
   * defaults to normal
   font style
+
+alignVertical = "top | middle | bottom"
+  * defaults to middle
+  vertical alignment  
+                            
+alignHorizontal = "left | center | right"
+  * defaults to left
+  horizontal alignment   
   
 backgroundColor = "red|green|..." or "#RRGGBB"
   * defaults to White
@@ -167,13 +175,14 @@ marginRight = "int"
   cascading to page, only available on `document` or `page`
   margin dimension for right
 
-alignVertical = "top | middle | bottom"
-  * defaults to middle
-  vertical alignment  
-                            
-alignHorizontal = "left | center | right"
-  * defaults to left
-  horizontal alignment                            
+width = "int"
+  only available on image
+  sets the image width 
+
+height = "int"                           
+  only available on image
+  sets the image height
+   
 ```
 
 
@@ -193,11 +202,13 @@ alignHorizontal = "left | center | right"
 7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
 10. [ ] Add CLI Main class 
-11. [ ] image width and height
+
 
 ### Won't do
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
+5. 
 ### Done
+11. [x] image width and height
 2. [x] margin properties
 8. [x] font style - how do you apply multiple
 9. [x] bold, italic, etc

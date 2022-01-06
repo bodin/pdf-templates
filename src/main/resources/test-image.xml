@@ -1,22 +1,28 @@
-<document>
+<document border="1" padding="10">
     <page>
         <table>
             <row>
                 <text fontColor="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
-                <image>https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
+                <image height="50">https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
             </row>
             <row>
-                <image>https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
+                <image width="50">https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
                 <text fontColor="blue">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
             </row>
             <row>
+                <text fontColor="blue">
+                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                </text>
+                <image width="50" height="50">https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
+            </row>
+            <row>
                 <table>
                     <row>
-                        <image>https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
+                        <image padding="0" width="300">https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
                         <text fontColor="blue">
                             this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                         </text>

@@ -14,13 +14,15 @@ fun main() {
         loader = ResourceLoader.Default
     )
 
-    // classpath
-    FileOutputStream("build/test-simple.pdf").use {
-        engine.executeFile("classpath://test-simple.xml", it)
-    }
+
     // uri
     FileOutputStream("build/test-image.pdf").use {
         engine.executeFile("file://$src/test-image.xml", it)
+    }
+/*
+    // classpath
+    FileOutputStream("build/test-simple.pdf").use {
+        engine.executeFile("classpath://test-simple.xml", it)
     }
     // absolute
     FileOutputStream("build/test-nested.pdf").use {
@@ -36,4 +38,5 @@ fun main() {
         var ctx = arrayOf("val1", "val2")
         engine.executeFile(ctx, "classpath://test-nested.hb.xml", it)
     }
+    */
 }

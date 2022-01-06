@@ -41,6 +41,8 @@ abstract class Content {
     var borderColorLeft: Color? = null
     var borderColorRight: Color? = null
 
+    var width: Float? = null
+    var height: Float? = null
 
     abstract fun draw(ctx: DrawContext)
 
@@ -99,10 +101,16 @@ abstract class Content {
     }
 
     fun styleCell(cell: Image){
-        if(this.backgroundColor != null) cell.backgroundColor = this.backgroundColor
+        if(this.width != null && this.height != null){
+            cell.scaleAbsolute(this.width?:0f, this.height?:0f)
+        } else if(this.width != null){
+            cell.scaleAbsoluteWidth(this.width?:0f)
+        }else if (this.height != null){
+            cell.scaleAbsoluteHeight(this.height?:0f)
+        }
     }
 
     fun styleCell(cell: PdfPTable){
-        this.styleCell(cell.defaultCell)
+       // this.styleCell(cell.defaultCell)
     }
 }

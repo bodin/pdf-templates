@@ -115,6 +115,8 @@ class XMLParser {
                             c.borderColorLeft = cl; c.borderWidthLeft = s
                             c.borderColorRight = cl; c.borderWidthRight = s
                         }
+                        "width" -> c.width = value.toFloatOrNull()
+                        "height" -> c.height = value.toFloatOrNull()
                     }
                 }
             }
