@@ -6,6 +6,7 @@ import com.lowagie.text.pdf.PdfPTable
 import java.awt.Color
 
 abstract class Content {
+    val DEFAULT_MARGIN = 36f
 
     var bookmark :String? = null
 
@@ -19,6 +20,11 @@ abstract class Content {
     var alignV: Int? = null
 
     var backgroundColor: Color? = null
+
+    var marginTop: Float? = null
+    var marginBottom: Float? = null
+    var marginLeft: Float? = null
+    var marginRight: Float? = null
 
     var paddingTop: Float? = null
     var paddingBottom: Float? = null
@@ -50,6 +56,11 @@ abstract class Content {
 
         if(c.backgroundColor == null) c.backgroundColor = this.backgroundColor
         if(c.fontColor == null) c.fontColor = this.fontColor
+
+        if(c.marginTop == null) c.marginTop = this.marginTop
+        if(c.marginBottom == null) c.marginBottom = this.marginBottom
+        if(c.marginLeft == null) c.marginLeft = this.marginLeft
+        if(c.marginRight == null) c.marginRight = this.marginRight
 
         if(c.paddingTop == null) c.paddingTop = this.paddingTop
         if(c.paddingBottom == null) c.paddingBottom = this.paddingBottom

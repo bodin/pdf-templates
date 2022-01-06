@@ -76,7 +76,7 @@ unless another parent changes it between the `table` and `text` cell.
 ```
 layout = "int int*"  
   * defaults to an even split 
-  non cascading, only available on 'table'
+  non cascading, only available on `table`
   Represents the number of colums and their propartion relative to each other.
 bookmark = "string"
   cascades down to the first `text` cell
@@ -142,6 +142,31 @@ paddingRight = "int"
   * defaults to 0
   padding dimension for right
 
+margin = "int"
+  * defaults to 36pt / .5in
+  cascading to page, only available on `document` or `page`
+  margin dimension for all sides
+  
+marginTop = "int"
+  * defaults to 36pt / .5in
+  cascading to page, only available on `document` or `page`
+  margin dimension for top
+  
+marginBottom = "int"
+  * defaults to 36pt / .5in
+  cascading to page, only available on `document` or `page`
+  margin dimension for bottom
+  
+marginLeft = "int"
+  * defaults to 36pt / .5in
+  cascading to page, only available on `document` or `page`
+  margin dimension for left
+  
+marginRight = "int"
+  * defaults to 36pt / .5in
+  cascading to page, only available on `document` or `page`
+  margin dimension for right
+
 alignVertical = "top | middle | bottom"
   * defaults to middle
   vertical alignment  
@@ -163,16 +188,17 @@ alignHorizontal = "left | center | right"
 ## Features
 ### Not Done
 1. [ ] Headers and Footers (document level and override at the page level)
-2. [ ] margin properties
 3. [ ] page numbering options
-4. [ ] Font (all in one directive)
 6. [ ] image loading by generic protocol (https, file, classpath)
 7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
 10. [ ] Add CLI Main class 
 11. [ ] image width and height
 
+### Won't do
+4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
 ### Done
+2. [x] margin properties
 8. [x] font style - how do you apply multiple
 9. [x] bold, italic, etc
 10. [x] Border properties

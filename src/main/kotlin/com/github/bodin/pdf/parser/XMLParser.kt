@@ -74,6 +74,17 @@ class XMLParser {
                         "fontStyle", "font-style" -> c.fontStyle = fontStyle(value)
                         "fontColor", "font-color" -> color(value)?.let { c.fontColor = it }
                         "backgroundColor", "background-color" ->  color(value)?.let { c.backgroundColor = it }
+                        "marginTop", "margin-top" -> c.marginTop = value.toFloatOrNull()
+                        "marginBottom", "margin-bottom"  -> c.marginBottom = value.toFloatOrNull()
+                        "marginLeft", "margin-left"  -> c.marginLeft = value.toFloatOrNull()
+                        "marginRight", "margin-right"  -> c.marginRight = value.toFloatOrNull()
+                        "margin" -> {
+                            c.marginTop = value.toFloatOrNull()
+                            c.marginBottom = value.toFloatOrNull()
+                            c.marginLeft = value.toFloatOrNull()
+                            c.marginRight = value.toFloatOrNull()
+                        }
+
                         "paddingTop", "padding-top" -> c.paddingTop = value.toFloatOrNull()
                         "paddingBottom", "padding-bottom"  -> c.paddingBottom = value.toFloatOrNull()
                         "paddingLeft", "padding-left"  -> c.paddingLeft = value.toFloatOrNull()

@@ -21,6 +21,11 @@ class DefaultContentOptions: Content {
 
         this.backgroundColor = Color.WHITE
 
+        this.marginTop = 36f
+        this.marginBottom = 36f
+        this.marginLeft = 36f
+        this.marginRight = 36f
+
         this.paddingTop = 0f
         this.paddingBottom = 0f
         this.paddingLeft = 0f
