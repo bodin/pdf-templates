@@ -198,7 +198,6 @@ height = "int"
 ### Not Done
 1. [ ] Headers and Footers (document level and override at the page level)
 3. [ ] page numbering options
-6. [ ] image loading by generic protocol (https, file, classpath)
 7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
 10. [ ] Add CLI Main class 
@@ -206,8 +205,9 @@ For example if we want a cell with padding and then a full bordered table.
 
 ### Won't do
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
-5. 
+ 
 ### Done
+6. [x] image loading by generic protocol (https, file, classpath)
 11. [x] image width and height
 2. [x] margin properties
 8. [x] font style - how do you apply multiple

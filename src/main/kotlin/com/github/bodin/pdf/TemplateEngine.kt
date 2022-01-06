@@ -20,10 +20,10 @@ class TemplateEngine(
     }
 
     fun executeFile(file: String, out: OutputStream){
-        this.execute(null, loader.load(file), out)
+        this.execute(null, TemplateSource.URL(loader.load(file)), out)
     }
     fun executeFile(ctx:Any? = null, file: String, out: OutputStream){
-        this.execute(ctx, loader.load(file), out)
+        this.execute(ctx, TemplateSource.URL(loader.load(file)), out)
     }
 
     fun execute(source: TemplateSource, os: OutputStream){

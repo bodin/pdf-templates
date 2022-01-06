@@ -1,5 +1,6 @@
 package com.github.bodin.pdf.ast
 
+import com.github.bodin.pdf.api.ResourceLoader
 import com.lowagie.text.Chunk
 import com.lowagie.text.Document
 import com.lowagie.text.Font
@@ -11,7 +12,7 @@ import java.awt.Color
 import java.util.*
 
 
-class DrawContext {
+class DrawContext(val loader : ResourceLoader) {
     var document: Document? = null
     var tables: Stack<PdfPTable> = Stack()
     var fontCache: MutableMap<String, Font> = HashMap()

@@ -6,7 +6,7 @@ import java.net.URI
 
 class ImageCell(content: String = ""): ContentCell(content) {
     override fun draw(ctx: DrawContext) {
-        val i = Image.getInstance(URI.create(this.content).toURL())
+        val i = Image.getInstance(ctx.loader.load(this.content))
 
         this.styleCell(i)
         var cell = PdfPCell(i)

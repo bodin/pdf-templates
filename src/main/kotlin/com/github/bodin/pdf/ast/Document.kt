@@ -1,5 +1,6 @@
 package com.github.bodin.pdf.ast
 
+import com.github.bodin.pdf.api.ResourceLoader
 import com.lowagie.text.Document
 import com.lowagie.text.HeaderFooter
 import com.lowagie.text.PageSize
@@ -10,7 +11,7 @@ import java.io.OutputStream
 class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
 
     fun write(out: OutputStream){
-        val ctx = DrawContext()
+        val ctx = DrawContext(ResourceLoader.Default)
         ctx.document = Document(PageSize.A4)
 
         //writer should be closed when document is closed
