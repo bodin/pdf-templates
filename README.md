@@ -197,11 +197,12 @@ height = "int"
 ## Features
 ### Not Done
 1. [ ] colspan
-2. [ ] Headers and Footers (document level and override at the page level)
-3. [ ] page numbering options
-4. [ ] add a 'cell' markup so we can style the cell of nested content. 
+2. [ ] DrawContext should be non-mutatable
+3. [ ] Headers and Footers (document level and override at the page level)
+4. [ ] page numbering options
+5. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-5. [ ] Add CLI Main class 
+6. [ ] Add CLI Main class 
 
 
 ### Won't do
