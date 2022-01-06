@@ -70,19 +70,19 @@ class XMLParser {
                         "layout" -> if (c is Table) c.layout = layout(value)
                         "bookmark" -> c.bookmark = value
                         "fontName", "font-name" -> c.fontName = value
-                        "fontSize", "font-size" -> c.fontSize = value.toFloat()
+                        "fontSize", "font-size" -> c.fontSize = value.toFloatOrNull()
                         "fontStyle", "font-style" -> c.fontStyle = fontStyle(value)
                         "fontColor", "font-color" -> color(value)?.let { c.fontColor = it }
                         "backgroundColor", "background-color" ->  color(value)?.let { c.backgroundColor = it }
-                        "paddingTop", "padding-top" -> c.paddingTop = value.toFloat()
-                        "paddingBottom", "padding-bottom"  -> c.paddingBottom = value.toFloat()
-                        "paddingLeft", "padding-left"  -> c.paddingLeft = value.toFloat()
-                        "paddingRight", "padding-right"  -> c.paddingRight = value.toFloat()
+                        "paddingTop", "padding-top" -> c.paddingTop = value.toFloatOrNull()
+                        "paddingBottom", "padding-bottom"  -> c.paddingBottom = value.toFloatOrNull()
+                        "paddingLeft", "padding-left"  -> c.paddingLeft = value.toFloatOrNull()
+                        "paddingRight", "padding-right"  -> c.paddingRight = value.toFloatOrNull()
                         "padding" -> {
-                            c.paddingTop = value.toFloat()
-                            c.paddingBottom = value.toFloat()
-                            c.paddingLeft = value.toFloat()
-                            c.paddingRight = value.toFloat()
+                            c.paddingTop = value.toFloatOrNull()
+                            c.paddingBottom = value.toFloatOrNull()
+                            c.paddingLeft = value.toFloatOrNull()
+                            c.paddingRight = value.toFloatOrNull()
                         }
                         "alignVertical", "align-vertical" -> when(value){
                             "top" -> c.alignV = Element.ALIGN_TOP
@@ -156,7 +156,7 @@ class XMLParser {
         return s
             .split(Regex("[ ,|]"))
             .toTypedArray()
-            .map { it.toFloat() }
+            .mapNotNull { it.toFloatOrNull() }
             .toFloatArray()
     }
 }
