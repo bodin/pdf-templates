@@ -63,11 +63,11 @@ which has multiple different `cell` representations
 document := page+
 page     := table+
 table    := row+
-row      := text+ | image+ | table+
+row      := (text | image | table)+
 ```
 
 ## Attributes
-Attributes by default cascade syntactically down into their children.  Specifying 
+Attributes by default cascade down into their children.  Specifying 
 `fontColor="red"` on a table will mean every `text` cell is printed in red font - 
 unless another parent changes it between the `table` and `text` cell.
 
@@ -199,13 +199,14 @@ colspan = "int"
 
 ## Features
 ### Not Done
-
-2. [ ] DrawContext should be non-mutatable
-3. [ ] Headers and Footers (document level and override at the page level)
-4. [ ] page numbering options
-5. [ ] add a 'cell' markup so we can style the cell of nested content. 
+1. [ ] allow paragraphs at the page level
+2. [ ] allow height on all elements (table, row, paragraph)
+3. [ ] DrawContext should be non-mutatable
+4. [ ] Headers and Footers (document level and override at the page level)
+5. [ ] page numbering options
+6. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-6. [ ] Add CLI Main class 
+7. [ ] Add CLI Main class 
 
 
 ### Won't do
