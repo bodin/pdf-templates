@@ -1,6 +1,7 @@
 package com.github.bodin.pdf.parser
 
 import com.github.bodin.pdf.ast.*
+import com.github.bodin.pdf.ast.nodes.*
 import com.lowagie.text.Element
 import com.lowagie.text.Font
 import org.slf4j.Logger

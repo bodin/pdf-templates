@@ -1,5 +1,7 @@
-package com.github.bodin.pdf.ast
+package com.github.bodin.pdf.ast.nodes
 
+import com.github.bodin.pdf.ast.ContentCell
+import com.github.bodin.pdf.ast.DrawContext
 import com.lowagie.text.Chunk
 import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfPCell

@@ -1,8 +1,9 @@
-package com.github.bodin.pdf.ast
+package com.github.bodin.pdf.ast.nodes
 
+import com.github.bodin.pdf.ast.ContentCell
+import com.github.bodin.pdf.ast.DrawContext
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
-import java.net.URI
 
 class ImageCell(content: String = ""): ContentCell(content) {
     override fun draw(ctx: DrawContext) {

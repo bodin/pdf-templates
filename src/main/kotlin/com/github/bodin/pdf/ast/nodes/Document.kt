@@ -1,6 +1,9 @@
-package com.github.bodin.pdf.ast
+package com.github.bodin.pdf.ast.nodes
 
 import com.github.bodin.pdf.api.ResourceLoader
+import com.github.bodin.pdf.ast.Content
+import com.github.bodin.pdf.ast.DrawContext
+import com.github.bodin.pdf.ast.NestedContent
 import com.lowagie.text.Document
 import com.lowagie.text.HeaderFooter
 import com.lowagie.text.PageSize

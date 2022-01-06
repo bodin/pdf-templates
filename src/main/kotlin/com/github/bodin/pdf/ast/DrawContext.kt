@@ -7,6 +7,7 @@ import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
 import com.lowagie.text.pdf.PdfAction
 import com.lowagie.text.pdf.PdfOutline
+import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
 import java.awt.Color
 import java.util.*
