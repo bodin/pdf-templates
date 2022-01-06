@@ -1,11 +1,11 @@
 <document>
     <page>
-        <table>
-            <row>
-                <text fontColor="#00FF00" bookmark="1">
+        <table fontStyle="bold">
+            <row fontStyle="bold strikethrough">
+                <text fontColor="#00FF00" bookmark="1" fontStyle="italic">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
-                <text fontColor="blue">
+                <text fontColor="blue" fontStyle="underline">
                     this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
                 </text>
                 <text fontColor="blue">

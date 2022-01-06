@@ -71,13 +71,7 @@ class XMLParser {
                         "bookmark" -> c.bookmark = value
                         "fontName", "font-name" -> c.fontName = value
                         "fontSize", "font-size" -> c.fontSize = value.toFloat()
-                        "fontStyle", "font-style" -> when(value){
-                            "bold" -> c.fontStyle = Font.BOLD
-                            "strikethrough" -> c.fontStyle = Font.STRIKETHRU
-                            "italic" -> c.fontStyle = Font.ITALIC
-                            "underline" -> c.fontStyle = Font.UNDERLINE
-                            "normal" -> c.fontStyle = Font.NORMAL
-                        }
+                        "fontStyle", "font-style" -> c.fontStyle = fontStyle(value)
                         "fontColor", "font-color" -> color(value)?.let { c.fontColor = it }
                         "backgroundColor", "background-color" ->  color(value)?.let { c.backgroundColor = it }
                         "paddingTop", "padding-top" -> c.paddingTop = value.toFloat()
@@ -118,6 +112,22 @@ class XMLParser {
         saxParser.parse(stream, defaultHandler)
         return content.pop() as Document
     }
+
+    private fun fontStyle(value:String): Int? {
+        var s: Int = Font.NORMAL
+
+        value.split(Regex("[ ,|]")).forEach{
+            when(it) {
+                "bold" -> s = s or Font.BOLD
+                "strikethrough" -> s = s or Font.STRIKETHRU
+                "italic" -> s = s or Font.ITALIC
+                "underline" -> s = s or Font.UNDERLINE
+                "normal" -> s = Font.NORMAL
+            }
+        }
+        return s
+    }
+
     private fun border(value:String, f: (Color?, Float?) -> Unit) {
         var c: Color? = null
         var s: Float? = null

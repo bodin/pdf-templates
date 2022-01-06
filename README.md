@@ -154,8 +154,11 @@ alignHorizontal = "left | center | right"
 
 # TODO
 ## Cleanup
-1. [x] Fix when missing some cells in a row
+### Not Done
 2. [ ] proper test cases, moving resources to test folder
+
+### Done
+1. [x] Fix when missing some cells in a row
 
 ## Features
 ### Not Done
@@ -163,22 +166,21 @@ alignHorizontal = "left | center | right"
 2. [ ] margin properties
 3. [ ] page numbering options
 4. [ ] Font (all in one directive)
-5. [ ] bold, italic, etc
 6. [ ] image loading by generic protocol (https, file, classpath)
 7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-8. [ ] font style - how do you apply multiple
-9. [ ] font style - if a table is bold, and a cell is italics - should it 
-combine or change?
 10. [ ] Add CLI Main class 
 11. [ ] image width and height
 
-
 ### Done
-2. [x] Border properties
-6. [x] TOC
-14. [x] allow 'dash based' attribute names
-15. [x] add template engine support (freemarker, handlebars, etc)
-16. [x] image cell
-17. [x] Add RGB colors
-12. [x] Set default values
+8. [x] font style - how do you apply multiple
+9. [x] bold, italic, etc
+10. [x] Border properties
+11. [x] TOC
+12. [x] allow 'dash based' attribute names
+13. [x] add template engine support (freemarker, handlebars, etc)
+14. [x] image cell
+15. [x] Add RGB colors
+16. [x] Set default values
+9. [x] font style - if a table is bold, and a cell is italics - should it
+       combine or change?
