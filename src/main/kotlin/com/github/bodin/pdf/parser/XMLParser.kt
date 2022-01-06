@@ -4,6 +4,8 @@ import com.github.bodin.pdf.ast.*
 import com.github.bodin.pdf.ast.nodes.*
 import com.lowagie.text.Element
 import com.lowagie.text.Font
+import com.lowagie.text.PageSize
+import com.lowagie.text.Rectangle
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.xml.sax.helpers.DefaultHandler
@@ -14,8 +16,7 @@ import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 class XMLParser {
-
-    val log: Logger = LoggerFactory.getLogger(this.javaClass)
+    private val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     fun parse(stream: InputStream): Document {
         val parserFactory:SAXParserFactory = SAXParserFactory.newInstance()
@@ -68,6 +69,7 @@ class XMLParser {
                     val name = attributes.getLocalName(i)
                     val value = attributes.getValue(i);
                     when (name) {
+                        "pageSize", "page-size" -> if(c is Document) c.pageSize = pageSize(value)
                         "layout" -> if (c is Table) c.layout = layout(value)
                         "bookmark" -> c.bookmark = value
                         "fontName", "font-name" -> c.fontName = value
@@ -155,12 +157,27 @@ class XMLParser {
         }
         f.invoke(c, s)
     }
-    private fun color(s : String): Color? {
-        if(s.startsWith("#")){
-            return Color.decode(s);
+    private fun pageSize(value : String): Rectangle? {
+        val vals = value.split(Regex("[ ,|]"))
+        if(vals.size == 2){
+            val w = vals[0].toFloatOrNull()
+            val h = vals[1].toFloatOrNull()
+            if(w != null && h != null) return Rectangle(w, h)
+        }
+        return try {
+            Class.forName("com.lowagie.text.PageSize")?.getField(value.toUpperCase())?.get(null) as Rectangle
+        } catch (e: Exception) {
+            log.error(e.message, e)
+            return null
+        }
+    }
+
+    private fun color(value : String): Color? {
+        if(value.startsWith("#")){
+            return Color.decode(value);
         }else {
             return try {
-                Class.forName("java.awt.Color")?.getField(s)?.get(null) as Color
+                Class.forName("java.awt.Color")?.getField(value)?.get(null) as Color
             } catch (e: Exception) {
                 log.error(e.message, e)
                 return null

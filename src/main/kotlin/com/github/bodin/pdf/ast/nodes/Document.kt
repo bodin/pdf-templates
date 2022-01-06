@@ -4,18 +4,17 @@ import com.github.bodin.pdf.api.ResourceLoader
 import com.github.bodin.pdf.ast.Content
 import com.github.bodin.pdf.ast.DrawContext
 import com.github.bodin.pdf.ast.NestedContent
+import com.lowagie.text.*
 import com.lowagie.text.Document
-import com.lowagie.text.HeaderFooter
-import com.lowagie.text.PageSize
-import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfWriter
 import java.io.OutputStream
 
 class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
+    var pageSize: Rectangle? = null
 
     fun write(out: OutputStream){
         val ctx = DrawContext(ResourceLoader.Default)
-        ctx.document = Document(PageSize.A4)
+        ctx.document = Document(pageSize?:PageSize.A4)
 
         //writer should be closed when document is closed
         val writer = PdfWriter.getInstance(ctx.document, out)

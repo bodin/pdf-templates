@@ -14,11 +14,6 @@ class Row(content: MutableList<ContentCell> = mutableListOf()) : NestedContent(c
     }
     override fun draw(ctx: DrawContext){
         this.drawChildren(ctx)
-        var needed = this.expectedCells - this.cells()
-        if(needed > 0){
-            val cell = PdfPCell()
-            cell.colspan = needed
-            ctx.tables.peek().addCell(cell)
-        }
+        ctx.tables.peek().completeRow()
     }
 }

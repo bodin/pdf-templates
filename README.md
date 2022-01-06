@@ -63,7 +63,7 @@ which has multiple different `cell` representations
 document := page+
 page     := table+
 table    := row+
-row      := (text | image | table)+
+row      := (text | image | table | blank)+
 ```
 
 ## Attributes
@@ -71,13 +71,19 @@ Attributes by default cascade down into their children.  Specifying
 `fontColor="red"` on a table will mean every `text` cell is printed in red font - 
 unless another parent changes it between the `table` and `text` cell.
 
-**All attributes can be written in camel case, or dash syntax.  `paddingTop` or `padding-top`**
+** All attributes can be written in camel case, or dash syntax.  `paddingTop` or `padding-top`**
 
 ```
+pageSize = "int int | string"
+ * defaults to A4
+ non cascading, only available on document
+ Sets the page size to either the specified witdth  height - or the named paper size (letter, A4, etc)
+
 layout = "int int*"  
   * defaults to an even split 
   non cascading, only available on `table`
   Represents the number of colums and their propartion relative to each other.
+    
 bookmark = "string"
   cascades down to the first `text` cell
   This represents an entry in the PDF outline that can be used by a user to navigate 
@@ -176,8 +182,8 @@ marginRight = "int"
   margin dimension for right
 
 width = "int"
-  only available on image
-  sets the image width 
+  only available on image and table elements
+  sets the image width in px, sets the table width in %
 
 height = "int"                           
   only available on image
@@ -199,20 +205,21 @@ colspan = "int"
 
 ## Features
 ### Not Done
-1. [ ] allow paragraphs at the page level
-2. [ ] allow height on all elements (table, row, paragraph)
-3. [ ] DrawContext should be non-mutatable
-4. [ ] Headers and Footers (document level and override at the page level)
-5. [ ] page numbering options
-6. [ ] add a 'cell' markup so we can style the cell of nested content. 
+2. [ ] allow paragraphs at the page level
+3. [ ] allow height on all elements (table, row, paragraph)
+4. [ ] DrawContext should be non-mutatable
+5. [ ] Headers and Footers (document level and override at the page level)
+6. [ ] page numbering options
+7. [ ] add a 'cell' markup so we can style the cell of nested content. 
 For example if we want a cell with padding and then a full bordered table.
-7. [ ] Add CLI Main class 
+8. [ ] Add CLI Main class 
 
 
 ### Won't do
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
+1. [x] specify page type (A4, letter, etc)
 1. [x] colspan
 7. [x] image loading by generic protocol (https, file, classpath)
 8. [x] image width and height

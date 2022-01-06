@@ -1,5 +1,5 @@
 <document>
-    <page bookmark="page1">
+    <page bookmark="page1" margin="0">
         <table>
             <row>
                 <table fontSize="18" width="75%" backgroundColor="red">

@@ -23,7 +23,7 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
         }
 
         val table = PdfPTable(layout)
-
+        table.widthPercentage = this.width?:100f
         ctx.tables.push(table)
 
         this.content.forEach { (it as Row).expectedCells = cells }
