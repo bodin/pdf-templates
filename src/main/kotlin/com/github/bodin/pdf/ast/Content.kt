@@ -48,6 +48,7 @@ abstract class Content {
     var height: Float? = null
 
     var colspan: Int? = null
+    var rowspan: Int? = null
 
     abstract fun draw(ctx: DrawContext)
 
@@ -106,6 +107,7 @@ abstract class Content {
         this.borderWidthLeft?.let{cell.borderWidthLeft = it }
         this.borderWidthRight?.let{cell.borderWidthRight = it }
         this.colspan?.let { cell.colspan = it }
+        this.rowspan?.let { cell.rowspan = it }
     }
 
     fun styleCell(cell: Image){

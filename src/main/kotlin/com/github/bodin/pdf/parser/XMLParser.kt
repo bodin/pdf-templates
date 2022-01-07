@@ -135,6 +135,7 @@ class XMLParser {
                         "width" -> c.width = value.toFloatOrNull()
                         "height" -> c.height = value.toFloatOrNull()
                         "colspan" -> c.colspan = value.toIntOrNull()
+                        "rowspan" -> c.rowspan = value.toIntOrNull()
                     }
                 }
             }

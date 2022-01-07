@@ -26,7 +26,6 @@ class Table(content: MutableList<Row> = mutableListOf()) : NestedContent(content
         table.widthPercentage = this.width?:100f
         ctx.tables.push(table)
 
-        this.content.forEach { (it as Row).expectedCells = cells }
         this.drawChildren(ctx)
 
         ctx.tables.pop()
