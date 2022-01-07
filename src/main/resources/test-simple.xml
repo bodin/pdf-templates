@@ -1,12 +1,11 @@
 <document margin="0">
     <page margin="0">
         <table fontStyle="bold">
+
             <row>
-
                 <text fontColor="blue" bookmark="colspan" colspan="3">
-                    <f fontStyle="underline">this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a <f fontSize="26">lot</f> of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text</f>
+                    <f fontStyle="">this is a lot <f fontSize="26">a</f>  of text <f fontColor="green">this is lot of</f> text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text</f>
                 </text>
-
             </row>
         </table>
     </page>

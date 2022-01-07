@@ -12,12 +12,14 @@ class TextCell(content: MutableList<TextChunk> = mutableListOf())
         var p = Paragraph()
         p.font = ctx.getFont(this)
         p.setLeading(0f, 1.35f)
+        val cell = PdfPCell()
+        cell.addElement(p)
+
+        this.styleCell(cell)
+
         ctx.paragraph = p
         this.drawChildren(ctx)
         ctx.paragraph = null
-
-        val cell = PdfPCell(p)
-        this.styleCell(cell)
 
         this.bookmark?.let { ctx.bookmark(p, it) }
         ctx.tables.peek().addCell(cell)
