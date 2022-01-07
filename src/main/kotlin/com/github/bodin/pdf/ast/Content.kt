@@ -116,6 +116,11 @@ abstract class Content {
         this.borderWidthLeft?.let{cell.borderWidthLeft = it }
         this.borderWidthRight?.let{cell.borderWidthRight = it }
 
+        this.borderColorTop?.let{cell.borderColorTop = it }
+        this.borderColorBottom?.let{cell.borderColorBottom = it }
+        this.borderColorLeft?.let{cell.borderColorLeft = it }
+        this.borderColorRight?.let{cell.borderColorRight = it }
+
         if(this.width != null && this.height != null){
             cell.scaleAbsolute(this.width?:0f, this.height?:0f)
         } else if(this.width != null){

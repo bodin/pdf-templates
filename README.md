@@ -216,7 +216,6 @@ rowspan = "int"
 ## Features
 ### Not Done
 3. [ ] allow leading to be set
-5. [ ] images at teh top level
 6. [ ] allow paragraph settings (before, after, indent, etc)
 7. [ ] fix underline
 8. [ ] allow height on all elements (table, row, paragraph)
@@ -231,20 +230,21 @@ rowspan = "int"
  
 ### Done
 2. [x] allow paragraphs at the page level
-3. [x] specify page type (A4, letter, etc)
-4. [x] colspan
-4. [x] rowspan
-6. [x] image loading by generic protocol (https, file, classpath)
-7. [x] image width and height
-8. [x] margin properties
-9. [x] font style - how do you apply multiple
-10. [x] bold, italic, etc
-11. [x] Border properties
-12. [x] TOC
-13. [x] allow 'dash based' attribute names
-14. [x] add template engine support (freemarker, handlebars, etc)
-15. [x] image cell
-16. [x] Add RGB colors
-17. [x] Set default values
-18. [x] font style - if a table is bold, and a cell is italics - should it
+5. [x] images at teh top level
+4. [x] specify page type (A4, letter, etc)
+5. [x] colspan
+6. [x] rowspan
+7. [x] image loading by generic protocol (https, file, classpath)
+8. [x] image width and height
+9. [x] margin properties
+10. [x] font style - how do you apply multiple
+11. [x] bold, italic, etc
+12. [x] Border properties
+13. [x] TOC
+14. [x] allow 'dash based' attribute names
+15. [x] add template engine support (freemarker, handlebars, etc)
+16. [x] image cell
+17. [x] Add RGB colors
+18. [x] Set default values
+19. [x] font style - if a table is bold, and a cell is italics - should it
         combine or change?

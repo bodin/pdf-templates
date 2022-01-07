@@ -13,6 +13,11 @@ class ImageCell(content: String = ""): ContentCell(content), CharacterAware {
         this.styleCell(i)
         var cell = PdfPCell(i)
         this.styleCell(cell)
-        ctx.tables.peek().addCell(cell)
+
+        if(ctx.tables.isEmpty()){
+            ctx.document?.add(i)
+        }else{
+            ctx.tables.peek().addCell(cell)
+        }
     }
 }

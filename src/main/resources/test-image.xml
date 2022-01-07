@@ -1,5 +1,7 @@
-<document border="1" padding="10">
+<document border="1 red" padding="10">
+
     <page>
+        <image border="1 green" height="50">https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png</image>
         <table>
             <row>
                 <text fontColor="blue">
