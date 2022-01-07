@@ -1,29 +1,10 @@
 <document margin="0">
     <page margin="0">
         <table fontStyle="bold">
-            <row fontStyle="bold strikethrough">
-                <text fontColor="#00FF00" bookmark="1" fontStyle="italic">
-                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
-                </text>
-                <text fontColor="blue" fontStyle="underline">
-                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
-                </text>
-                <text fontColor="blue">
-                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
-                </text>
-            </row>
-            <row>
-                <blank/>
-                <text fontColor="blue" bookmark="2">
-                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
-                </text>
-                <blank/>
-            </row>
-
             <row>
 
                 <text fontColor="blue" bookmark="colspan" colspan="3">
-                    this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text
+                    <f fontStyle="underline">this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a <f fontSize="26">lot</f> of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text</f>
                 </text>
 
             </row>

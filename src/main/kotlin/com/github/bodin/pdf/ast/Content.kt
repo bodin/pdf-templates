@@ -1,5 +1,6 @@
 package com.github.bodin.pdf.ast
 
+import com.lowagie.text.Chunk
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPTable
@@ -108,6 +109,11 @@ abstract class Content {
     }
 
     fun styleCell(cell: Image){
+        this.borderWidthTop?.let{cell.borderWidthTop = it }
+        this.borderWidthBottom?.let{cell.borderWidthBottom = it }
+        this.borderWidthLeft?.let{cell.borderWidthLeft = it }
+        this.borderWidthRight?.let{cell.borderWidthRight = it }
+
         if(this.width != null && this.height != null){
             cell.scaleAbsolute(this.width?:0f, this.height?:0f)
         } else if(this.width != null){

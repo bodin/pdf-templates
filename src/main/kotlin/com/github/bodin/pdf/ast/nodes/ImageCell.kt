@@ -1,11 +1,12 @@
 package com.github.bodin.pdf.ast.nodes
 
+import com.github.bodin.pdf.ast.CharacterAware
 import com.github.bodin.pdf.ast.ContentCell
 import com.github.bodin.pdf.ast.DrawContext
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 
-class ImageCell(content: String = ""): ContentCell(content) {
+class ImageCell(content: String = ""): ContentCell(content), CharacterAware {
     override fun draw(ctx: DrawContext) {
         val i = Image.getInstance(ctx.loader.load(this.content))
 

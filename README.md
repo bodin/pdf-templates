@@ -14,7 +14,7 @@ Example Template (without handlebars processing needed)
                 <table layout="30 70">
                     <row>
                         <text>cell with 30%</text>
-                        <text>this is longer text given 70% of the nested table space</text>
+                        <text>this is <f fontStyle="bold">longer</b> text given 70% of the nested table space</text>
                     </row>
                 </table>
             </row>
@@ -64,12 +64,17 @@ document := page+
 page     := table+
 table    := row+
 row      := (text | image | table | blank)+
+image    := <string>
+text     := (<string> | f)+
+f        := (<string> | f)+
 ```
 
 ## Attributes
 Attributes by default cascade down into their children.  Specifying 
 `fontColor="red"` on a table will mean every `text` cell is printed in red font - 
 unless another parent changes it between the `table` and `text` cell.
+
+`text` cells can have different font styles mixed by using the `f` element with font attributes 
 
 ** All attributes can be written in camel case, or dash syntax.  `paddingTop` or `padding-top`**
 
@@ -207,12 +212,13 @@ colspan = "int"
 ## Features
 ### Not Done
 2. [ ] allow paragraphs at the page level
-3. [ ] allow height on all elements (table, row, paragraph)
-5. [ ] Headers and Footers (document level and override at the page level)
-6. [ ] page numbering options
-7. [ ] add a 'cell' markup so we can style the cell of nested content. 
-For example if we want a cell with padding and then a full bordered table.
-8. [ ] Add CLI Main class
+3. [ ] allow leading to be set
+4. [ ] fix underline
+5. [ ] allow height on all elements (table, row, paragraph)
+6. [ ] Headers and Footers (document level and override at the page level)
+7. [ ] page numbering options
+8. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
+9. [ ] Add CLI Main class
 
 
 ### Won't do

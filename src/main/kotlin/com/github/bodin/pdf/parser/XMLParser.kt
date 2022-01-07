@@ -34,10 +34,14 @@ class XMLParser {
                     "page" -> content.push(Page())
                     "table" -> content.push(Table())
                     "row" -> content.push(Row())
-                    "text" -> content.push(TextCell())
                     "blank" -> content.push(BlankCell())
                     "image" -> content.push(ImageCell())
-                    else -> println("ERROR: Unknown Element $qName")
+                    "text" -> content.push(TextCell())
+                    "f" -> {
+                        text(content.peek() as NestedContent)
+                        content.push(TextChunk())
+                    }
+                    else -> log.error("ERROR: Unknown Element $qName")
                 }
                 copyAttributes(content.peek(), attributes)
             }
@@ -50,16 +54,26 @@ class XMLParser {
                     "page" -> (content.peek() as NestedContent).content.add(top)
                     "table" -> (content.peek() as NestedContent).content.add(top)
                     "row" -> (content.peek() as NestedContent).content.add(top)
-                    "image", "text", "blank" -> {
+                    "image", "blank" -> {
                         (top as ContentCell).content = builder.toString().trim()
                         (content.peek() as NestedContent).content.add(top)
+                    }
+                    "text", "f" -> {
+                        text(top as NestedContent)
+                        (content.peek() as NestedContent).content.add(top);
                     }
                 }
                 builder.clear()
             }
-
+            fun text(top: NestedContent){
+                val str = builder.toString().trim()
+                builder.clear()
+                if(str.isNotEmpty()){
+                    top.content.add(TextChunk(str))
+                }
+            }
             override fun characters(ch: CharArray, start: Int, length: Int) {
-                if(content.peek() is ContentCell) {
+                if(content.peek() is CharacterAware) {
                     builder.append(ch, start, length)
                 }
             }
