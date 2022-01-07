@@ -61,7 +61,7 @@ which has multiple different `cell` representations
 
 ```
 document := page+
-page     := table+
+page     := (table | text)+
 table    := row+
 row      := (text | image | table | blank)+
 image    := <string>
@@ -211,20 +211,23 @@ colspan = "int"
 
 ## Features
 ### Not Done
-2. [ ] allow paragraphs at the page level
 3. [ ] allow leading to be set
-4. [ ] fix underline
-5. [ ] allow height on all elements (table, row, paragraph)
-6. [ ] Headers and Footers (document level and override at the page level)
-7. [ ] page numbering options
-8. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
-9. [ ] Add CLI Main class
+4. [ ] rowspan
+5. [ ] images at teh top level
+6. [ ] allow paragraph settings (before, after, indent, etc)
+7. [ ] fix underline
+8. [ ] allow height on all elements (table, row, paragraph)
+9. [ ] Headers and Footers (document level and override at the page level)
+10. [ ] page numbering options
+11. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
+12. [ ] Add CLI Main class
 
 
 ### Won't do
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
+2. [x] allow paragraphs at the page level
 1. [x] specify page type (A4, letter, etc)
 1. [x] colspan
 7. [x] image loading by generic protocol (https, file, classpath)

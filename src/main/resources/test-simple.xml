@@ -1,12 +1,36 @@
-<document margin="0">
-    <page margin="0">
+<document margin="10" border="1" pageSize="letter">
+    <page>
+        <text>
+            this is a lot of text this is lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text
+        </text>
         <table fontStyle="bold">
-
             <row>
-                <text fontColor="blue" bookmark="colspan" colspan="3">
-                    <f fontStyle="">this is a lot <f fontSize="26">a</f>  of text <f fontColor="green">this is lot of</f> text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text</f>
+                <text>1</text>
+                <text fontColor="blue" bookmark="colspan2">
+                    <f fontStyle="underline">this is a lot <f fontSize="26">a</f>  of text <f fontColor="green">this is lot of</f> text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text</f>
                 </text>
+                <text>2</text>
             </row>
         </table>
+        <text>
+            this is a lot of text this is lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text
+        </text>
+    </page>
+    <page>
+        <text>
+            this is a lot of text this is lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text
+        </text>
+        <table fontStyle="bold">
+            <row>
+                <text>1</text>
+                <text fontColor="blue" bookmark="colspan2">
+                    <f fontStyle="underline">this is a lot <f fontSize="26">a</f>  of text <f fontColor="green">this is lot of</f> text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text</f>
+                </text>
+                <text>2</text>
+            </row>
+        </table>
+        <text>
+            this is a lot of text this is lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text
+        </text>
     </page>
 </document>

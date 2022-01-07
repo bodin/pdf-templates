@@ -15,6 +15,8 @@ class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(con
     fun write(out: OutputStream){
         val ctx = DrawContext(ResourceLoader.Default)
         ctx.document = Document(pageSize?:PageSize.A4)
+        //this is needed before document.open
+        ctx.applyMargins(this)
 
         //writer should be closed when document is closed
         val writer = PdfWriter.getInstance(ctx.document, out)
@@ -23,12 +25,6 @@ class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(con
 
         ctx.document?.open()
         ctx.outline = writer?.directContent?.rootOutline
-
-        val header = HeaderFooter(Phrase("This is a header."), false)
-        val footer = HeaderFooter(Phrase("This is page "), Phrase("."))
-        ctx.document?.setHeader(header)
-        ctx.document?.setFooter(footer)
-
         draw(ctx)
         ctx.document?.close()
     }

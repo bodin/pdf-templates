@@ -12,11 +12,20 @@ import java.util.*
 
 class DrawContext(val loader : ResourceLoader) {
     var document: Document? = null
+    var page = 1
     var tables: Stack<PdfPTable> = Stack()
     var paragraph: Paragraph? = null
     var fontCache: MutableMap<String, Font> = HashMap()
     var outline: PdfOutline? = null
 
+    fun applyMargins(cell:Content){
+        document?.setMargins(
+            cell.marginLeft?: Content.DEFAULT_MARGIN,
+            cell.marginRight?: Content.DEFAULT_MARGIN,
+            cell.marginTop?: Content.DEFAULT_MARGIN,
+            cell.marginBottom?: Content.DEFAULT_MARGIN
+        )
+    }
     fun bookmark(ch: Paragraph, lbl:String){
         (ch.chunks.first() as Chunk).setLocalDestination(lbl)
         PdfOutline(outline, PdfAction.gotoLocalPage(lbl, false), lbl)
