@@ -13,6 +13,19 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    val handleBars = "com.github.jknack:handlebars:4.3.0"
+
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.slf4j:slf4j-api:1.7.32")
+    implementation("com.github.librepdf:openpdf:1.3.26")
+
+    compileOnly(handleBars)
+
+    testImplementation(kotlin("test"))
+    testImplementation(handleBars)
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -51,16 +64,8 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
-}
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation("org.slf4j:slf4j-api:1.7.32")
-
-    // https://mvnrepository.com/artifact/com.github.librepdf/openpdf
-    implementation("com.github.librepdf:openpdf:1.3.26")
-
-    compileOnly("com.github.jknack:handlebars:4.3.0")
+    test {
+        useJUnitPlatform()
+    }
 }

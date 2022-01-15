@@ -207,11 +207,12 @@ rowspan = "int"
 # TODO
 ## Cleanup
 ### Not Done
-2. [ ] proper test cases, moving resources to test folder
 3. [ ] DrawContext should be non-mutatable
- 
+4. [ ] Real samples
+
 ### Done
 1. [x] Fix when missing some cells in a row
+2. [x] proper test cases, moving resources to test folder
 
 ## Features
 ### Not Done
