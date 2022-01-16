@@ -71,6 +71,8 @@ publishing {
 }
 
 java {
+    //https://youtrack.jetbrains.com/issue/KT-45335
+    targetCompatibility=JavaVersion.VERSION_1_8
     withSourcesJar()
     withJavadocJar()
 }
@@ -81,6 +83,7 @@ signing{
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications["mavenJava"])
 }
+
 
 tasks {
     wrapper {
