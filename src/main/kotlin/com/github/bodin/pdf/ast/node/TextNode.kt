@@ -13,7 +13,10 @@ class TextNode(private val parent: Node, content: MutableList<FormatNode> = muta
         p.font = ctx.getFont(this)
         p.setLeading(0f, 1.35f)
 
+        attributes.alignH?.let{ p.alignment = it }
+
         val cell = PdfPCell()
+        cell.isUseAscender = true
         cell.addElement(p)
         ctx.styleCell(cell, this.attributes)
 

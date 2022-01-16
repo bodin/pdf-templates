@@ -116,7 +116,6 @@ open class Attributes {
                 this.borderColorBottom = Color.BLACK
                 this.borderColorLeft = Color.BLACK
                 this.borderColorRight = Color.BLACK
-
             }
         }
     }

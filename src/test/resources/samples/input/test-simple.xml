@@ -5,8 +5,8 @@
         </text>
         <table fontStyle="bold" padding="10">
             <row>
-                <text rowspan="2" colspan="2">1</text>
-                <text fontColor="blue" bookmark="fooofofo">
+                <text rowspan="2" colspan="2" >1</text>
+                <text fontColor="blue" bookmark="fooofofo" >
                     <f fontStyle="underline">this is a lot a of text <f fontColor="green">this is lot of</f> text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is a lot of text this is <f fontSize="26">a</f>  lot of text this is a lot of text this is a lot of text</f>
                 </text>
                 <text>2</text>

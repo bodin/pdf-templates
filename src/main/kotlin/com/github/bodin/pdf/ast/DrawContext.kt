@@ -67,8 +67,9 @@ class DrawContext(val loader : ResourceLoader) {
         a.borderWidthBottom?.let{cell.borderWidthBottom = it }
         a.borderWidthLeft?.let{cell.borderWidthLeft = it }
         a.borderWidthRight?.let{cell.borderWidthRight = it }
-        a.alignH?.let { cell.horizontalAlignment = it }
+
         a.alignV?.let { cell.verticalAlignment = it }
+
         a.colspan?.let { cell.colspan = it }
         a.rowspan?.let { cell.rowspan = it }
     }

@@ -18,6 +18,11 @@ internal class Test {
         )
 
         // classpath
+        FileOutputStream("$dest/invoice.pdf").use {
+            engine.executeFile("classpath://samples/input/invoice.xml", it)
+        }
+
+        // classpath
         FileOutputStream("$dest/test-simple.pdf").use {
             engine.executeFile("classpath://samples/input/test-simple.xml", it)
         }

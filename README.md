@@ -61,7 +61,7 @@ which has multiple different `cell` representations
 
 ```
 document := page+
-page     := (table | text)+
+page     := (table | text | spacer)+
 table    := row+
 row      := (text | image | table | blank)+
 image    := <string>
@@ -209,6 +209,8 @@ rowspan = "int"
 ### Not Done
 3. [ ] DrawContext should be non-mutatable
 4. [ ] Real samples
+5. [ ] ascender=true hardcoded
+6. [ ] leading hardcoded
 
 ### Done
 1. [x] Fix when missing some cells in a row
