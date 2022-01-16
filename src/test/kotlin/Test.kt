@@ -21,31 +21,5 @@ internal class Test {
         FileOutputStream("$dest/invoice.pdf").use {
             engine.executeFile("classpath://samples/input/invoice.xml", it)
         }
-
-        // classpath
-        FileOutputStream("$dest/test-simple.pdf").use {
-            engine.executeFile("classpath://samples/input/test-simple.xml", it)
-        }
-
-        // uri
-        FileOutputStream("$dest/test-image.pdf").use {
-            engine.executeFile("file://$src/test-image.xml", it)
-        }
-
-        // absolute
-        FileOutputStream("$dest/test-nested.pdf").use {
-            engine.executeFile("$src/test-nested.xml", it)
-        }
-        // relative
-        FileOutputStream("$dest/test-hard.pdf").use {
-            engine.executeFile("src/test/resources/samples/input/test-hard.xml", it)
-        }
-
-        //with handlebars preprocessing
-        FileOutputStream("$dest/test-nested.hb.pdf").use {
-            var ctx = arrayOf("val1", "val2")
-            engine.executeFile(ctx, "classpath://samples/input/test-nested.hb.xml", it)
-        }
-
     }
 }

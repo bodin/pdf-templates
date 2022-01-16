@@ -10,7 +10,7 @@ class TextLeaf(parent: Node, content: String = "")
 
     override fun draw(ctx: DrawContext) {
         if(ctx.paragraph?.size?:0 > 0) this.content = " " + this.content
-        val ch = Chunk(this.content, ctx.getFont(this))
+        val ch = Chunk(this.content, ctx.getFont(this.attributes))
         ctx.paragraph?.add(ch)
     }
 }

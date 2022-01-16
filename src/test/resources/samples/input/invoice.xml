@@ -4,19 +4,23 @@
 
 <document border="0 black" padding="5" font-size="10">
     <page>
-        <table layout="70 30">
+        <table layout="75 25">
             <row>
-                <text rowspan="2"></text>
+                <image padding="0" rowspan="2" width="100">
+                    classpath://samples/input/logo.png
+                </image>
                 <text font-size="26" font-style="bold">INVOICE</text>
             </row>
             <row>
-                <table font-size="10">
-                    <row><text>DATE</text><text>1/16/2022</text></row>
-                    <row><text>INVOICE</text><text>12345678</text></row>
+                <table font-size="8">
+                    <row><text>{{> label text="DATE"}}</text><text>1/16/2022</text></row>
+                    <row><text>{{> label text="INVOICE"}}</text><text>12345678</text></row>
                 </table>
             </row>
         </table>
-        <spacer height="20"></spacer>
+
+        <spacer height="50"></spacer>
+
         <table layout="15 35 15 35">
             <row>
                 <text align-vertical="top">{{> label text="FROM"}}</text>
@@ -37,6 +41,7 @@
         </table>
 
         <spacer height="30"></spacer>
+
         <table layout="15 35 15 35">
             <row><text>{{> label text="TERMS"}}</text><text colspan="3">30 days</text></row>
             <row><text>{{> label text="DUE"}}</text><text colspan="3">$123.45</text></row>
@@ -44,36 +49,36 @@
 
         <spacer height="30"></spacer>
 
-        <table layout="45 15 20 20">
-            <row border="1" border-right="0" align-horizontal="center" padding="5">
-                <text>Item Description</text>
+        <table layout="45 15 20 20" align-horizontal="right">
+            <row border="1" border-right="0" padding="5">
+                <text align-horizontal="left">Item Description</text>
                 <text>Quantity</text>
                 <text>Price</text>
                 <text border-right="1">Amount</text>
             </row>
             <row border-left="1">
-                <text>Item A</text>
+                <text align-horizontal="left">Item A</text>
                 <text>2</text>
                 <text>$10.00</text>
                 <text border-right="1">$20.00</text>
             </row>
-            <row border-left="1" border-bottom="1" border-top="0" padding-bottom="40">
-                <text>Item B</text>
-                <text>1</text>
+            <row border-left="1">
+                <text align-horizontal="left">Item B</text>
+                <text >1</text>
                 <text>$5.45</text>
                 <text border-right="1">$5.45</text>
             </row>
-            <row>
-                <text colspan="3" align-horizontal="right">{{> label text="Subtotal"}}</text>
-                <text border="1" border-top="0" align-horizontal="center">$25.45</text>
+            <row border-top="1" >
+                <text colspan="3">{{> label text="Subtotal"}}</text>
+                <text border="1" font-style="bold">$25.45</text>
             </row>
             <row>
-                <text colspan="3" align-horizontal="right">{{> label text="Tax"}}</text>
-                <text border="1" border-top="0" align-horizontal="center">$1.25</text>
+                <text colspan="3" >{{> label text="Tax"}}</text>
+                <text border="1" border-top="0" font-style="bold">$1.25</text>
             </row>
             <row>
-                <text colspan="3" align-horizontal="right" align-vertical="top">{{> label text="Balance Due"}}</text>
-                <text border="1" border-top="0" align-horizontal="center" >$26.70</text>
+                <text colspan="3" >{{> label text="Balance Due"}}</text>
+                <text border="1" border-top="0" font-style="bold" >$26.70</text>
             </row>
         </table>
 

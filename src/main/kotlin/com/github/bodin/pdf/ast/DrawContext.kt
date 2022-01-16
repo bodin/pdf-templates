@@ -35,12 +35,12 @@ class DrawContext(val loader : ResourceLoader) {
         PdfOutline(outline, PdfAction.gotoLocalPage(lbl, false), lbl)
     }
 
-    fun getFont(c: Node) : Font {
+    fun getFont(a: Attributes) : Font {
         return this.getFont(
-            c.attributes.fontName?:FontFactory.HELVETICA,
-            c.attributes.fontSize?: Font.DEFAULTSIZE.toFloat(),
-            c.attributes.fontStyle?: Font.NORMAL,
-            c.attributes.fontColor?: Color.BLACK)
+            a.fontName?:FontFactory.HELVETICA,
+            a.fontSize?: Font.DEFAULTSIZE.toFloat(),
+            a.fontStyle?: Font.NORMAL,
+            a.fontColor?: Color.BLACK)
     }
 
     fun getFont(name: String, size: Float, style: Int, color: Color) : Font {
@@ -50,7 +50,17 @@ class DrawContext(val loader : ResourceLoader) {
         }
     }
 
+    fun styleCell(cell: Paragraph, a: Attributes){
+        cell.font = this.getFont(a)
+        cell.setLeading(0f, 1.35f)
+
+        a.alignH?.let{ cell.alignment = it }
+    }
     fun styleCell(cell: PdfPCell, a: Attributes){
+
+        cell.isUseAscender = true
+        cell.isUseDescender = true
+
         a.backgroundColor?.let{ cell.backgroundColor = it }
 
         a.paddingTop?.let{ cell.paddingTop = it }
@@ -88,10 +98,12 @@ class DrawContext(val loader : ResourceLoader) {
         if(a.width != null && a.height != null){
             cell.scaleAbsolute(a.width?:0f, a.height?:0f)
         } else if(a.width != null){
-            cell.scaleAbsoluteWidth(a.width?:0f)
+            cell.scaleToFit(a.width?:0f, cell.plainHeight)
         }else if (a.height != null){
-            cell.scaleAbsoluteHeight(a.height?:0f)
+            cell.scaleToFit(cell.plainWidth, a.height?:0f)
         }
+
+        a.alignH?.let{ cell.alignment = it }
     }
 
     fun styleCell(@Suppress("UNUSED_PARAMETER") cell: PdfPTable, @Suppress("UNUSED_PARAMETER") a: Attributes){
