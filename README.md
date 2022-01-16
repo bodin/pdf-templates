@@ -191,7 +191,7 @@ width = "int"
   sets the image width in px, sets the table width in %
 
 height = "int"                           
-  only available on image
+  only available on image and spacer
   sets the image height
    
 colspan = "int"
@@ -208,11 +208,11 @@ rowspan = "int"
 ## Cleanup
 ### Not Done
 3. [ ] DrawContext should be non-mutatable
-4. [ ] Real samples
 5. [ ] ascender=true hardcoded
 6. [ ] leading hardcoded
 
 ### Done
+4. [x] Real samples
 1. [x] Fix when missing some cells in a row
 2. [x] proper test cases, moving resources to test folder
 
@@ -220,7 +220,6 @@ rowspan = "int"
 ### Not Done
 3. [ ] allow leading to be set
 6. [ ] allow paragraph settings (before, after, indent, etc)
-7. [ ] fix underline
 8. [ ] allow height on all elements (table, row, paragraph)
 9. [ ] Headers and Footers (document level and override at the page level)
 10. [ ] page numbering options
@@ -232,6 +231,7 @@ rowspan = "int"
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
+7. [x] fix underline
 2. [x] allow paragraphs at the page level
 5. [x] images at teh top level
 4. [x] specify page type (A4, letter, etc)
