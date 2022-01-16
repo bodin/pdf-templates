@@ -42,6 +42,12 @@ publishing {
         }
     }
 }
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 signing{
     val signingKey: String? by project
     val signingPassword: String? by project
