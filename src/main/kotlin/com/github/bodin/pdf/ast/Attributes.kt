@@ -1,16 +1,18 @@
 package com.github.bodin.pdf.ast
 
-import com.lowagie.text.Chunk
-import com.lowagie.text.Image
-import com.lowagie.text.pdf.PdfPCell
-import com.lowagie.text.pdf.PdfPTable
+import com.lowagie.text.Element
+import com.lowagie.text.Font
+import com.lowagie.text.FontFactory
+import com.lowagie.text.Rectangle
 import java.awt.Color
 
-abstract class Content {
-    companion object {
-        const val DEFAULT_MARGIN = 36f
-    }
+open class Attributes {
 
+    //non cascading
+    var pageSize: Rectangle? = null
+    var layout: FloatArray? = null
+
+    //partial cascading
     var bookmark :String? = null
 
     //Preferences
@@ -50,20 +52,15 @@ abstract class Content {
     var colspan: Int? = null
     var rowspan: Int? = null
 
-    abstract fun draw(ctx: DrawContext)
-
-    open fun cells(): Int {
-        return this.colspan?:1
-    }
-
-    fun copyTo(c: Content){
+    fun cascade(c: Attributes){
         if(c.fontName == null) c.fontName = this.fontName
         if(c.fontSize == null) c.fontSize = this.fontSize
         if(c.fontStyle == null) c.fontStyle = this.fontStyle
         if(c.fontColor == null) c.fontColor = this.fontColor
 
         if(c.backgroundColor == null) c.backgroundColor = this.backgroundColor
-        if(c.fontColor == null) c.fontColor = this.fontColor
+        if(c.alignH == null) c.alignH = this.alignH
+        if(c.alignV == null) c.alignV = this.alignV
 
         if(c.marginTop == null) c.marginTop = this.marginTop
         if(c.marginBottom == null) c.marginBottom = this.marginBottom
@@ -84,53 +81,43 @@ abstract class Content {
         if(c.borderColorBottom == null) c.borderColorBottom = this.borderColorBottom
         if(c.borderColorLeft == null) c.borderColorLeft = this.borderColorLeft
         if(c.borderColorRight == null) c.borderColorRight = this.borderColorRight
-
-        //if(c.colspan == null) c.colspan = this.colspan
     }
 
+    companion object {
+        const val DEFAULT_MARGIN = 36f
+        fun Default() = object: Attributes(){
+            init {
+                this.fontName = FontFactory.HELVETICA
+                this.fontSize = 12f
+                this.fontStyle = Font.NORMAL
+                this.fontColor = Color.BLACK
 
-    fun styleCell(cell: PdfPCell){
-        this.backgroundColor?.let{ cell.backgroundColor = it }
+                this.alignH = Element.ALIGN_LEFT
+                this.alignV = Element.ALIGN_MIDDLE
 
-        this.paddingTop?.let{ cell.paddingTop = it }
-        this.paddingBottom?.let{ cell.paddingBottom = it }
-        this.paddingLeft?.let{ cell.paddingLeft = it }
-        this.paddingRight?.let{ cell.paddingRight = it }
+                this.backgroundColor = Color.WHITE
 
-        this.borderColorTop?.let{cell.borderColorTop = it }
-        this.borderColorBottom?.let{cell.borderColorBottom = it }
-        this.borderColorLeft?.let{cell.borderColorLeft = it }
-        this.borderColorRight?.let{cell.borderColorRight = it }
+                this.marginTop = DEFAULT_MARGIN
+                this.marginBottom = DEFAULT_MARGIN
+                this.marginLeft = DEFAULT_MARGIN
+                this.marginRight = DEFAULT_MARGIN
 
-        this.borderWidthTop?.let{cell.borderWidthTop = it }
-        this.borderWidthBottom?.let{cell.borderWidthBottom = it }
-        this.borderWidthLeft?.let{cell.borderWidthLeft = it }
-        this.borderWidthRight?.let{cell.borderWidthRight = it }
-        this.colspan?.let { cell.colspan = it }
-        this.rowspan?.let { cell.rowspan = it }
-    }
+                this.paddingTop = 0f
+                this.paddingBottom = 0f
+                this.paddingLeft = 0f
+                this.paddingRight = 0f
 
-    fun styleCell(cell: Image){
-        this.borderWidthTop?.let{cell.borderWidthTop = it }
-        this.borderWidthBottom?.let{cell.borderWidthBottom = it }
-        this.borderWidthLeft?.let{cell.borderWidthLeft = it }
-        this.borderWidthRight?.let{cell.borderWidthRight = it }
+                this.borderWidthTop = 0f
+                this.borderWidthBottom = 0f
+                this.borderWidthLeft = 0f
+                this.borderWidthRight = 0f
 
-        this.borderColorTop?.let{cell.borderColorTop = it }
-        this.borderColorBottom?.let{cell.borderColorBottom = it }
-        this.borderColorLeft?.let{cell.borderColorLeft = it }
-        this.borderColorRight?.let{cell.borderColorRight = it }
+                this.borderColorTop = Color.BLACK
+                this.borderColorBottom = Color.BLACK
+                this.borderColorLeft = Color.BLACK
+                this.borderColorRight = Color.BLACK
 
-        if(this.width != null && this.height != null){
-            cell.scaleAbsolute(this.width?:0f, this.height?:0f)
-        } else if(this.width != null){
-            cell.scaleAbsoluteWidth(this.width?:0f)
-        }else if (this.height != null){
-            cell.scaleAbsoluteHeight(this.height?:0f)
+            }
         }
-    }
-
-    fun styleCell(cell: PdfPTable){
-       // this.styleCell(cell.defaultCell)
     }
 }

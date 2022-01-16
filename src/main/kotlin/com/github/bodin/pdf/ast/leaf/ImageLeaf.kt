@@ -1,18 +1,18 @@
-package com.github.bodin.pdf.ast.nodes
+package com.github.bodin.pdf.ast.leaf
 
-import com.github.bodin.pdf.ast.CharacterAware
-import com.github.bodin.pdf.ast.ContentCell
+import com.github.bodin.pdf.ast.Node
+import com.github.bodin.pdf.ast.LeafNode
 import com.github.bodin.pdf.ast.DrawContext
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfPCell
 
-class ImageCell(content: String = ""): ContentCell(content), CharacterAware {
+class ImageLeaf(parent: Node, content: String = ""): LeafNode(parent, content) {
     override fun draw(ctx: DrawContext) {
         val i = Image.getInstance(ctx.loader.load(this.content))
 
-        this.styleCell(i)
+        ctx.styleCell(i, this.attributes)
         var cell = PdfPCell(i)
-        this.styleCell(cell)
+        ctx.styleCell(cell, this.attributes)
 
         if(ctx.tables.isEmpty()){
             ctx.document?.add(i)

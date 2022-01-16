@@ -1,13 +1,13 @@
-package com.github.bodin.pdf.ast.nodes
+package com.github.bodin.pdf.ast.node
 
 import com.github.bodin.pdf.ast.*
-import com.lowagie.text.Chunk
 import com.lowagie.text.Paragraph
-import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfPCell
 
-class TextCell(content: MutableList<TextChunk> = mutableListOf())
-    : NestedContent(content as MutableList<Content>), CharacterAware {
+class TextNode(private val parent: Node, content: MutableList<FormatNode> = mutableListOf())
+    : InteriorNode<FormatNode>(content) {
+
+    override fun getParent(): Node? = parent
     override fun draw(ctx: DrawContext) {
         var p = Paragraph()
         p.font = ctx.getFont(this)
@@ -15,13 +15,13 @@ class TextCell(content: MutableList<TextChunk> = mutableListOf())
 
         val cell = PdfPCell()
         cell.addElement(p)
-        this.styleCell(cell)
+        ctx.styleCell(cell, this.attributes)
 
         ctx.paragraph = p
         this.drawChildren(ctx)
         ctx.paragraph = null
 
-        this.bookmark?.let { ctx.bookmark(p, it) }
+        this.attributes.bookmark?.let { ctx.bookmark(p, it) }
         if(ctx.tables.isEmpty()){
             ctx.document?.add(p)
         }else{

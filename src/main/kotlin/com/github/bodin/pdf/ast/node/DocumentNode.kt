@@ -1,20 +1,22 @@
-package com.github.bodin.pdf.ast.nodes
+package com.github.bodin.pdf.ast.node
 
 import com.github.bodin.pdf.api.ResourceLoader
-import com.github.bodin.pdf.ast.Content
+import com.github.bodin.pdf.ast.Node
 import com.github.bodin.pdf.ast.DrawContext
-import com.github.bodin.pdf.ast.NestedContent
-import com.lowagie.text.*
+import com.github.bodin.pdf.ast.InteriorNode
 import com.lowagie.text.Document
+import com.lowagie.text.PageSize
 import com.lowagie.text.pdf.PdfWriter
 import java.io.OutputStream
 
-class Document(content: MutableList<Page> = mutableListOf()) : NestedContent(content as MutableList<Content>) {
-    var pageSize: Rectangle? = null
+class DocumentNode(content: MutableList<PageNode> = mutableListOf())
+    : InteriorNode<PageNode>(content) {
+
+    override fun getParent(): Node? = null
 
     fun write(out: OutputStream){
         val ctx = DrawContext(ResourceLoader.Default)
-        ctx.document = Document(pageSize?:PageSize.A4)
+        ctx.document = Document(attributes.pageSize?:PageSize.A4)
         //this is needed before document.open
         ctx.applyMargins(this)
 
