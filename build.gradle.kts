@@ -30,8 +30,35 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            pom {
+                name.set("pdf-templates")
+                description.set("A java library for generating PDF documents from an XML template.")
+                url.set("https://github.com/bodin/pdf-templates")
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://github.com/bodin/pdf-templates/blob/main/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("bodin")
+                    }
+                }
+                scm {
+                    url.set("https://github.com/bodin/pdf-templates")
+                }
+            }
         }
     }
+
+    //Invalid POM: /io/github/bodin/pdf-templates/0.0.1/pdf-templates-0.0.1.pom:
+    // Project name missing,
+    // Project description missing,
+    // Project URL missing,
+    // License information missing,
+    // SCM URL missing,
+    // Developer information missing
     repositories {
         maven {
             name="sonatype"
