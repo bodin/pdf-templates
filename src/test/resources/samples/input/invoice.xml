@@ -24,15 +24,15 @@
         <table layout="15 35 15 35">
             <row>
                 <text align-vertical="top">{{> label text="FROM"}}</text>
-                <table>
-                    <row><text>Company Name</text></row>
+                <table padding="3" font-size="8">
+                    <row padding-top="5"><text>Company Name</text></row>
                     <row><text>Email Address</text></row>
                     <row><text>Address 1</text></row>
                     <row><text>Address 2</text></row>
                 </table>
                 <text align-vertical="top">{{> label text="TO"}}</text>
-                <table>
-                    <row><text>Client Name</text></row>
+                <table padding="3" font-size="8">
+                    <row padding-top="5"><text>Client Name</text></row>
                     <row><text>Email Address</text></row>
                     <row><text>Address 1</text></row>
                     <row><text>Address 2</text></row>
