@@ -23,6 +23,11 @@ Example Template (without handlebars processing needed)
 </document>
 ```
 
+## Examples
+* [Input - invoice.xml](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/input/invoice.xml)
+* [Ouput - invoice.pdf](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/output/invoice.pdf)
+
+
 ## API Usage
 
 ```java
