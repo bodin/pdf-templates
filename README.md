@@ -66,7 +66,7 @@ which has multiple different `cell` representations
 
 ```
 document := page+
-page     := (table | text | spacer)+
+page     := (table | text | blank)+
 table    := row+
 row      := (text | image | table | blank)+
 image    := <string>
@@ -196,7 +196,7 @@ width = "int"
   sets the image width in px, sets the table width in %
 
 height = "int"                           
-  only available on image and spacer
+  only available on image and blank
   sets the image height
    
 colspan = "int"

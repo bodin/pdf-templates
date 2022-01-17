@@ -19,7 +19,7 @@
             </row>
         </table>
 
-        <spacer height="50"></spacer>
+        <blank height="50"></blank>
 
         <table layout="15 35 15 35">
             <row>
@@ -40,14 +40,14 @@
             </row>
         </table>
 
-        <spacer height="30"></spacer>
+        <blank height="30"></blank>
 
         <table layout="15 35 15 35">
             <row><text>{{> label text="TERMS"}}</text><text colspan="3">30 days</text></row>
             <row><text>{{> label text="DUE"}}</text><text colspan="3">$123.45</text></row>
         </table>
 
-        <spacer height="30"></spacer>
+        <blank height="30"></blank>
 
         <table layout="45 15 20 20" align-horizontal="right">
             <row border="1" border-right="0" padding="5">

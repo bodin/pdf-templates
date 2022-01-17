@@ -5,7 +5,6 @@ import com.github.bodin.pdf.ast.LeafNode
 import com.github.bodin.pdf.ast.Node
 import com.github.bodin.pdf.ast.leaf.BlankLeaf
 import com.github.bodin.pdf.ast.leaf.ImageLeaf
-import com.github.bodin.pdf.ast.leaf.SpacerLeaf
 import com.github.bodin.pdf.ast.leaf.TextLeaf
 import com.github.bodin.pdf.ast.node.*
 import org.slf4j.Logger
@@ -27,7 +26,6 @@ class PDFXMLHandler(private val attribtueParser : XMLAttribtueReader = XMLAttrib
         when (qName) {
             "document" -> content.push(DocumentNode())
             "page" -> content.push(PageNode(peek))
-            "spacer" -> content.push(SpacerLeaf(peek))
             "table" -> content.push(TableNode(peek))
             "row" -> content.push(RowNode(peek))
             "blank" -> content.push(BlankLeaf(peek))
@@ -48,7 +46,6 @@ class PDFXMLHandler(private val attribtueParser : XMLAttribtueReader = XMLAttrib
         when (qName) {
             "document" -> content.push(top)
             "page" -> add(peek, top)
-            "spacer" -> add(peek, top)
             "table" -> add(peek, top)
             "row" -> add(peek, top)
             "image", "blank" -> {
