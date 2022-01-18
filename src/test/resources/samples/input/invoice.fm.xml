@@ -1,0 +1,92 @@
+<#macro label text>
+<f font-style="bold underline" font-color="#33497a">${text}</f>
+</#macro>
+
+<document border="0 black" padding="5" font-size="10">
+    <page>
+        <table layout="75 25">
+            <row>
+                <image padding="0" rowspan="2" width="100">
+                    classpath://samples/input/logo.png
+                </image>
+                <text font-size="26" font-style="bold">INVOICE</text>
+            </row>
+            <row>
+                <table font-size="8">
+                    <row><text><@label "DATE"/></text><text>${.now?date}</text></row>
+                    <row><text><@label "INVOICE"/></text><text>12345678</text></row>
+                </table>
+            </row>
+        </table>
+
+        <blank height="50"></blank>
+
+        <table layout="15 35 15 35">
+            <row>
+                <text align-vertical="top"><@label "FROM"/></text>
+                <table padding="3" font-size="8">
+                    <row padding-top="5"><text>Company Name</text></row>
+                    <row><text>Email Address</text></row>
+                    <row><text>Address 1</text></row>
+                    <row><text>Address 2</text></row>
+                </table>
+                <text align-vertical="top"><@label "TO"/></text>
+                <table padding="3" font-size="8">
+                    <row padding-top="5"><text>Client Name</text></row>
+                    <row><text>Email Address</text></row>
+                    <row><text>Address 1</text></row>
+                    <row><text>Address 2</text></row>
+                </table>
+            </row>
+        </table>
+
+        <blank height="30"></blank>
+
+        <table layout="15 35 15 35">
+            <row><text><@label "TERMS"/></text><text colspan="3">30 days</text></row>
+            <row><text><@label "DUE"/></text><text colspan="3">$123.45</text></row>
+        </table>
+
+        <blank height="30"></blank>
+
+        <table layout="45 15 20 20" align-horizontal="right">
+            <row border="1" border-right="0" padding="5">
+                <text align-horizontal="left">Item Description</text>
+                <text>Quantity</text>
+                <text>Price</text>
+                <text border-right="1">Amount</text>
+            </row>
+            <row border-left="1">
+                <text align-horizontal="left">Item A</text>
+                <text>2</text>
+                <text>$10.00</text>
+                <text border-right="1">$20.00</text>
+            </row>
+            <row border-left="1">
+                <text align-horizontal="left">Item B</text>
+                <text >1</text>
+                <text>$5.45</text>
+                <text border-right="1">$5.45</text>
+            </row>
+            <row border-top="1" >
+                <text colspan="3"><@label "Subtotal"/></text>
+                <text border="1" font-style="bold">$25.45</text>
+            </row>
+            <row>
+                <text colspan="3" ><@label "Tax"/></text>
+                <text border="1" border-top="0" font-style="bold">$1.25</text>
+            </row>
+            <row>
+                <text colspan="3" ><@label "Balance Due"/></text>
+                <text border="1" border-top="0" font-style="bold" >$26.70</text>
+            </row>
+        </table>
+
+        <table>
+            <row padding-top="30" ><text><@label "NOTES"/></text></row>
+            <row padding="10" padding-bottom="100" border="1">
+                <text>These are my notes</text>
+            </row>
+        </table>
+    </page>
+</document>

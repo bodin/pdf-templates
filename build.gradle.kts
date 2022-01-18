@@ -14,16 +14,19 @@ repositories {
 }
 
 dependencies {
-    val handleBars = "com.github.jknack:handlebars:4.3.0"
+    val handlebars = "com.github.jknack:handlebars:4.3.0"
+    val freemarker = "org.freemarker:freemarker:2.3.31"
 
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.slf4j:slf4j-api:1.7.32")
     implementation("com.github.librepdf:openpdf:1.3.26")
 
-    compileOnly(handleBars)
+    compileOnly(handlebars)
+    compileOnly(freemarker)
 
     testImplementation(kotlin("test"))
-    testImplementation(handleBars)
+    testImplementation(handlebars)
+    testImplementation(freemarker)
 }
 
 publishing {
@@ -52,13 +55,6 @@ publishing {
         }
     }
 
-    //Invalid POM: /io/github/bodin/pdf-templates/0.0.1/pdf-templates-0.0.1.pom:
-    // Project name missing,
-    // Project description missing,
-    // Project URL missing,
-    // License information missing,
-    // SCM URL missing,
-    // Developer information missing
     repositories {
         maven {
             name="sonatype"

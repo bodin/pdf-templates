@@ -24,9 +24,13 @@ Example Template (without handlebars processing needed)
 ```
 
 ## Examples
-* [Input - invoice.xml](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/input/invoice.xml)
-* [Ouput - invoice.pdf](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/output/invoice.pdf)
+Handlebars
+* [Input - invoice.hb.xml](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/input/invoice.hb.xml)
+* [Ouput - invoice.hb.pdf](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/output/invoice.hb.pdf)
 
+Freemarker
+* [Input - invoice.fm.xml](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/input/invoice.fm.xml)
+* [Ouput - invoice.fm.pdf](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/output/invoice.fm.pdf)
 
 ## API Usage
 
