@@ -1,7 +1,7 @@
 # pdf-templates
 
 [![Build](https://img.shields.io/github/workflow/status/bodin/pdf-templates/Full%20Build?label=Build&style=for-the-badge&logo=github)](https://github.com/bodin/pdf-templates/actions)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.bodin/pdf-templates.svg?label=Maven%20Central&color=informational&style=for-the-badge&logo=apachemaven)](https://search.maven.org/artifact/org.apache.maven.plugins/maven-release-plugin)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.bodin/pdf-templates.svg?label=Maven%20Central&color=informational&style=for-the-badge&logo=apachemaven)](https://search.maven.org/artifact/io.github.bodin/pdf-templates)
 
 
 PDF Templates is a simple XML to PDF conversion tool.  The layout 
