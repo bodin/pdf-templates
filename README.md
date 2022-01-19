@@ -1,19 +1,26 @@
 # pdf-templates
-PDF Templates is a simple XML to PDF conversion tool.  The layout 
-is table based, including nested tables.  Additional flexibility 
-can be added using a template engine to preprocess the document.
-
-Definitions of Handlebars and Freemarker are included as preprocessing
-engine options, however your project will need to be included the 
-dependencies explicitly if they are used, otherwise you will have a 
-runtime exception for `ClassNotFound`. 
-
-***
 
 [![Build](https://img.shields.io/github/workflow/status/bodin/pdf-templates/Full%20Build?label=Build&style=for-the-badge&logo=github)](https://github.com/bodin/pdf-templates/actions)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.bodin/pdf-templates.svg?label=Maven%20Central&color=informational&style=for-the-badge&logo=apachemaven)](https://search.maven.org/artifact/org.apache.maven.plugins/maven-release-plugin)
 
-Example Template (without handlebars processing needed)
+
+PDF Templates is a simple XML to PDF conversion tool.  The layout 
+is table based, including nested tables.  Additional flexibility 
+and dynamic content can be added using a provided preprocessor.
+
+Preprocessors for Handlebars and Freemarker are included as  
+options, however your project will need to be included the 
+dependencies explicitly if they are used, otherwise you will have a 
+runtime exception for `ClassNotFound`.  
+
+Additional Preprocessors can be created by implementing the 
+`TemplateProcessor` interface
+
+***
+
+## Examples
+
+Below is a simple template that does not use a preprocessor
 ```xml
 <document>
     <page>
@@ -32,7 +39,6 @@ Example Template (without handlebars processing needed)
 </document>
 ```
 
-## Examples
 Handlebars
 * [Input - invoice.hb.xml](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/input/invoice.hb.xml)
 * [Ouput - invoice.hb.pdf](https://github.com/bodin/pdf-templates/blob/main/src/test/resources/samples/output/invoice.hb.pdf)
