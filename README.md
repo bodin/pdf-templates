@@ -106,7 +106,7 @@ unless another parent changes it between the `table` and `text` cell.
 pageSize = "int int | string"
  * defaults to A4
  non cascading, only available on document
- Sets the page size to either the specified witdth  height - or the named paper size (letter, A4, etc)
+ Set to either (witdth, height), or the named paper size (letter, A4, ...)
 
 layout = "int int*"  
   * defaults to an even split 
@@ -245,7 +245,6 @@ rowspan = "int"
 ### Not Done
 3. [ ] allow leading to be set
 6. [ ] allow paragraph settings (before, after, indent, etc)
-
 9. [ ] Headers and Footers (document level and override at the page level)
 10. [ ] page numbering options
 11. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
