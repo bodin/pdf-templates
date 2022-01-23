@@ -53,6 +53,7 @@ open class Attributes {
     var rowspan: Int? = null
 
     fun cascade(c: Attributes){
+        if(c.height == null) c.height = this.height
         if(c.fontName == null) c.fontName = this.fontName
         if(c.fontSize == null) c.fontSize = this.fontSize
         if(c.fontStyle == null) c.fontStyle = this.fontStyle

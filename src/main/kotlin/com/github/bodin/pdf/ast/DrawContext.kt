@@ -61,6 +61,8 @@ class DrawContext(val loader : ResourceLoader) {
         cell.isUseAscender = true
         cell.isUseDescender = true
 
+        a.height?.let{ cell.minimumHeight = it}
+
         a.backgroundColor?.let{ cell.backgroundColor = it }
 
         a.paddingTop?.let{ cell.paddingTop = it }

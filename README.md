@@ -212,11 +212,12 @@ marginRight = "int"
 
 width = "int"
   only available on image and table elements
-  sets the image width in px, sets the table width in %
+  IMAGES: sets the image height.  If width is undefined, aspect ratio will be perserved
+  TABLES: sets the table width in %
 
 height = "int"                           
-  only available on image and blank
-  sets the image height
+  IMAGES: sets the image height.  If width is undefined, aspect ratio will be perserved
+  CELLS: sets the minimum height of the cell
    
 colspan = "int"
   non cascading, only available on `cells`
@@ -244,7 +245,7 @@ rowspan = "int"
 ### Not Done
 3. [ ] allow leading to be set
 6. [ ] allow paragraph settings (before, after, indent, etc)
-8. [ ] allow height on all elements (table, row, paragraph)
+
 9. [ ] Headers and Footers (document level and override at the page level)
 10. [ ] page numbering options
 11. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
@@ -255,6 +256,7 @@ rowspan = "int"
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
+8. [x] allow height on all elements (table, row, paragraph)
 7. [x] fix underline
 2. [x] allow paragraphs at the page level
 5. [x] images at teh top level
