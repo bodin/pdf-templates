@@ -84,7 +84,9 @@ The grammar is straight forward, with the only interesting rule being `row`
 which has multiple different `cell` representations
 
 ```
-document := page+
+document := (page | header | footer)+
+header   := (table | text | blank)+
+footer   := (table | text | blank)+
 page     := (table | text | blank)+
 table    := row+
 row      := (text | image | table | blank)+
@@ -92,6 +94,10 @@ image    := <string>
 text     := (<string> | f)+
 f        := (<string> | f)+
 ```
+
+## Page Number.
+The special text `$PAGE_NUMBER` will be replaced with current page number value.  **_This value is 
+only respected in the footer and will return `0` in other contexts._**
 
 ## Attributes
 Attributes by default cascade down into their children.  Specifying 
@@ -228,13 +234,17 @@ rowspan = "int"
   sets the number of rows to use     
 ```
 
+# Known Issues
+1. `rowspan` does not work in page headers and footers
+2. Images in headers do not work correctly (can't set both width and height)
 
 # TODO
 ## Cleanup
 ### Not Done
 3. [ ] DrawContext should be non-mutatable
-5. [ ] ascender=true hardcoded
-6. [ ] leading hardcoded
+4. [ ] ascender=true hardcoded
+5. [ ] leading hardcoded
+6. [ ] AST validation (validate tables have children, etc)
 
 ### Done
 4. [x] Real samples
@@ -243,18 +253,21 @@ rowspan = "int"
 
 ## Features
 ### Not Done
+1. [ ] document creator, author and title
+2. [ ] allow header / footer to not show on certain pages
 3. [ ] allow leading to be set
-6. [ ] allow paragraph settings (before, after, indent, etc)
-9. [ ] Headers and Footers (document level and override at the page level)
-10. [ ] page numbering options
-11. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
-12. [ ] Add CLI Main class
+4. [ ] allow paragraph settings (before, after, indent, etc)
+5. [ ] Page override Headers and Footers
+8. [ ] add a 'cell' markup so we can style the cell of nested content.  For example if we want a cell with padding and then a full bordered table.
+9. [ ] Add CLI Main class
 
 
 ### Won't do
 4. Font (all in one directive) - don't like the complexity and as of now, does not seem to add much benefit
  
 ### Done
+7. [X] page numbering options
+5. [X] Document Level Headers and Footers
 8. [x] allow height on all elements (table, row, paragraph)
 7. [x] fix underline
 2. [x] allow paragraphs at the page level

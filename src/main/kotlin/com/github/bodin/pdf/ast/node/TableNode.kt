@@ -32,13 +32,13 @@ class TableNode(private val parent: Node, content: MutableList<RowNode> = mutabl
 
         ctx.tables.pop()
 
-        ctx.styleCell(table, this.attributes)
+        DrawContext.styleCell(table, this.attributes)
 
         if(ctx.tables.isEmpty()) {
-            ctx.document?.add(table)
+            ctx.document.add(table)
         } else {
             val cell = PdfPCell(table)
-            ctx.styleCell(cell, this.attributes)
+            DrawContext.styleCell(cell, this.attributes)
 
             cell.paddingTop = 0f
             cell.paddingBottom = 0f

@@ -18,8 +18,8 @@ dependencies {
     val freemarker = "org.freemarker:freemarker:2.3.31"
 
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.slf4j:slf4j-api:1.7.32")
-    implementation("com.github.librepdf:openpdf:1.3.26")
+    implementation("org.slf4j:slf4j-api:1.7.36")
+    implementation("com.github.librepdf:openpdf:1.3.27")
 
     compileOnly(handlebars)
     compileOnly(freemarker)

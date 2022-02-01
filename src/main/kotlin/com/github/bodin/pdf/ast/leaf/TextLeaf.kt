@@ -9,8 +9,10 @@ class TextLeaf(parent: Node, content: String = "")
     : LeafNode(parent, content) {
 
     override fun draw(ctx: DrawContext) {
-        if(ctx.paragraph?.size?:0 > 0) this.content = " " + this.content
-        val ch = Chunk(this.content, ctx.getFont(this.attributes))
+        //TODO - move this to a strategy
+        var new_content = this.content.replace("\$PAGE_NUMBER", ctx.document.pageNumber.toString())
+        if(ctx.paragraph?.size?:0 > 0) new_content = " $new_content"
+        val ch = Chunk(new_content, ctx.getFont(this.attributes))
         ctx.paragraph?.add(ch)
     }
 }

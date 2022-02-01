@@ -9,9 +9,25 @@ import kotlin.test.Test
 internal class Test {
     @Test
     fun test() {
+        val model = mapOf(Pair("pages", listOf(1,2,3)))
+        testHandlebars(model)
+        testFreemarker(model)
+    }
+    fun testFreemarker(model: Map<String, Any>){
+        val dest = "${Paths.get("").toAbsolutePath()}/src/test/resources/samples/output"
 
-        val src = "${Paths.get("").toAbsolutePath().toString()}/src/test/resources/samples/input"
-        val dest = "${Paths.get("").toAbsolutePath().toString()}/src/test/resources/samples/output"
+        var engine = TemplateEngine(
+            processor = FreemarkerProcessor(),
+            loader = ResourceLoader.Default
+        )
+        // classpath
+        FileOutputStream("$dest/invoice.fm.pdf").use {
+            engine.executeFile(model,"classpath://samples/input/invoice.fm.xml", it)
+        }
+    }
+    fun testHandlebars(model: Map<String, Any>){
+
+        val dest = "${Paths.get("").toAbsolutePath()}/src/test/resources/samples/output"
 
         var engine = TemplateEngine(
             processor = HandlebarsProcessor(),
@@ -20,16 +36,7 @@ internal class Test {
 
         // classpath
         FileOutputStream("$dest/invoice.hb.pdf").use {
-            engine.executeFile("classpath://samples/input/invoice.hb.xml", it)
-        }
-
-        engine = TemplateEngine(
-            processor = FreemarkerProcessor(),
-            loader = ResourceLoader.Default
-        )
-        // classpath
-        FileOutputStream("$dest/invoice.fm.pdf").use {
-            engine.executeFile("classpath://samples/input/invoice.fm.xml", it)
+            engine.executeFile(model, "classpath://samples/input/invoice.hb.xml", it)
         }
     }
 }

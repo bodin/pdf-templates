@@ -3,7 +3,6 @@ package com.github.bodin.pdf
 import com.github.bodin.pdf.api.ResourceLoader
 import com.github.bodin.pdf.api.TemplateProcessor
 import com.github.bodin.pdf.api.TemplateSource
-import com.github.bodin.pdf.ast.Attributes
 import com.github.bodin.pdf.parser.XMLParser
 import java.io.OutputStream
 
@@ -40,7 +39,6 @@ class TemplateEngine(
         source.inputStream().use {fin ->
             processor.process(ctx, fin).use { pin ->
                 var doc = XMLParser().parse(pin)
-                Attributes.Default().cascade(doc.attributes)
                 doc.write(out)
             }
         }

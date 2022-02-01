@@ -25,7 +25,9 @@ class PDFXMLHandler(private val attribtueParser : XMLAttribtueReader = XMLAttrib
         val peek = content.peek();
         when (qName) {
             "document" -> content.push(DocumentNode())
-            "page" -> content.push(PageNode(peek))
+            "header" -> content.push(HeaderOrFooterNode(peek))
+            "footer" -> content.push(HeaderOrFooterNode(peek))
+            "page" -> content.push(PageNode(peek as DocumentNode))
             "table" -> content.push(TableNode(peek))
             "row" -> content.push(RowNode(peek))
             "blank" -> content.push(BlankLeaf(peek))
@@ -45,6 +47,8 @@ class PDFXMLHandler(private val attribtueParser : XMLAttribtueReader = XMLAttrib
         val peek = content.peek()
         when (qName) {
             "document" -> content.push(top)
+            "header" -> (peek as DocumentNode).header = top as HeaderOrFooterNode
+            "footer" -> (peek as DocumentNode).footer = top as HeaderOrFooterNode
             "page" -> add(peek, top)
             "table" -> add(peek, top)
             "row" -> add(peek, top)

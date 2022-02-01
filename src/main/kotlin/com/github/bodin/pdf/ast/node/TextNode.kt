@@ -14,7 +14,7 @@ class TextNode(private val parent: Node, content: MutableList<FormatNode> = muta
 
         val cell = PdfPCell()
         cell.addElement(p)
-        ctx.styleCell(cell, this.attributes)
+        DrawContext.styleCell(cell, this.attributes)
 
         ctx.paragraph = p
         this.drawChildren(ctx)
@@ -22,7 +22,7 @@ class TextNode(private val parent: Node, content: MutableList<FormatNode> = muta
 
         this.attributes.bookmark?.let { ctx.bookmark(p, it) }
         if(ctx.tables.isEmpty()){
-            ctx.document?.add(p)
+            ctx.document.add(p)
         }else{
             ctx.tables.peek().addCell(cell)
         }
