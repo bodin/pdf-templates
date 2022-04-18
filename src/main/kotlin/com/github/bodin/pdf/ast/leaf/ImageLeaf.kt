@@ -16,7 +16,7 @@ class ImageLeaf(parent: Node, content: String = ""): LeafNode(parent, content) {
 
         if(ctx.inHeader) {
             // This works in header, but does not allow both width and height to be set
-            var cell = PdfPCell()
+            cell = PdfPCell()
             cell.addElement(i)
         }
 
