@@ -8,10 +8,10 @@ PDF Templates is a simple XML to PDF conversion tool.  The layout
 is table based, including nested tables.  Additional flexibility 
 and dynamic content can be added using a provided preprocessor.
 
-Preprocessors for Handlebars and Freemarker are included as  
-options, however your project will need to be included the 
+Preprocessors for Handlebars and Freemarker are included as 
+options, however your project will need to include the 
 dependencies explicitly if they are used, otherwise you will have a 
-runtime exception for `ClassNotFound`.  
+runtime `ClassNotFound` exception.  
 
 Additional Preprocessors can be created by implementing the 
 `TemplateProcessor` interface
